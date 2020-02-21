@@ -4,8 +4,7 @@
 	 <link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
 
 
-<link rel="stylesheet" media="screen" href="https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css" />
-
+<link rel="stylesheet" media="screen" href="https://raw.githubusercontent.com/mrcoles/markdown-css/master/markdown.css" />
 
 
 
@@ -43,7 +42,7 @@
 	</head>
 
 	<body>
-		<div class="o-container u-margin-top--small markdown-body ">
+		<div class="o-container u-margin-top--small markdown">
 		{{content}}
 		</div>
 	</body>
