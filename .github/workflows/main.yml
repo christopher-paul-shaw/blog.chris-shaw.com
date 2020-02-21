@@ -1,0 +1,29 @@
+name: Build
+on: [push]
+jobs:
+  Test:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-18.04 ]
+        php-versions: ['7.2']
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php-versions }}   
+      - name: Build
+        run: |
+          php build.php
+      - name: Deploy
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v1
+        with:
+          target_branch: gh-pages
+          build_dir: www
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
