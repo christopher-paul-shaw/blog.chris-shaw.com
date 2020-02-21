@@ -44,7 +44,7 @@ while (false !== ($entry = readdir($handle))) {
 }
 
 krsort($article);
-foreach ($article as $file => $data) {	
+foreach ($articles as $file => $data) {	
 	$filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
 	<a href="./{$filename}">{$data['title']}</a><br />
