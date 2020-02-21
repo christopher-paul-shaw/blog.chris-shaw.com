@@ -18,7 +18,7 @@ $parser = new Parsedown();
 
 while (false !== ($entry = readdir($handle))) {
 	if (in_array($entry,['.','..'])) continue;	
-	$content = file_get_contents($entry);
+	$content = file_get_contents('data/'.$entry);
 
 	$parts = explode('--PAGE--',$content);
 
