@@ -14,22 +14,41 @@ while (false !== ($entry = readdir($handle))) {
  */
 # Convert Posts To Pages
 $handle = opendir('data');
+$parser = new Parsedown();
+
 while (false !== ($entry = readdir($handle))) {
-	if (in_array($entry,['.','..'])) continue;
-	$pages[] = generatePage('data/'.$entry);
+	if (in_array($entry,['.','..'])) continue;	
+	$content = file_get_contents($entry);
+
+	$parts = explode('--PAGE--',$content);
+
+	if(isset($parts[1])) {
+		$article = $parts[1];
+		$summary = $parts[0];
+	}
+	else {
+		$article = $parts[0];
+		$summary = '';
+	}
+
+	$title = explode('.',$entry)[0];
+	$title = explode('__',$title)[1];
+	$title = str_replace('-',' ',$title);
+	$title = ucwords($title);
+	$articles[$entry] = [
+		'title' => $title, 
+		'summary' => $parser->text($summary),
+		'article' => $parser->text($article),
+	];
+	$page[] = $entry;
 }
 
-
-
-krsort($pages);
-$html = [];
-foreach ($pages as $file) {
-	$title = explode('.',$file)[0];
-	$title = ucwords(str_replace(['-'],' ',$title));
+krsort($article);
+foreach ($article as $file => $data) {	
+	$filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
-	<a href="./{$file}">{$title}</a><br />
+	<a href="./{$filename}">{$data['title']}</a><br />
 HTML;
-
 }
 $html = implode('',$html);
 generatePage('index',$html);
