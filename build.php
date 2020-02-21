@@ -40,14 +40,13 @@ while (false !== ($entry = readdir($handle))) {
 		'summary' => $parser->text($summary),
 		'article' => $parser->text($article),
 	];
-	$page[] = $entry;
 }
 
 krsort($articles);
-
+print_r($articles);
 $html = [];
 foreach ($articles as $file => $data) {	
-	$filename = generatePage($file,$data['article']);
+	$pages[] = $filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
 	<a href="./{$filename}">{$data['title']}</a><br />
 HTML;
