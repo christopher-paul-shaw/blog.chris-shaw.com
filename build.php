@@ -1,7 +1,7 @@
 <?php
 
 include 'Parsedown.php';
-shell_exec("rm -rf ./www/*");
+mkdir('./www/');
 
 $pages = [];
 /*
