@@ -54,7 +54,7 @@ HTML;
 $html = implode('',$html);
 generatePage('index',$html);
 
-
+file_put_contents('www/CNAME','blog.chris-shaw.com');
 
 
 
