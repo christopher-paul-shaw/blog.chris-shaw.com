@@ -88,7 +88,7 @@ function generatePage ($file, $raw_content=false){
 	$body = file_get_contents('views/layout.tpl');
 	$content = $raw_content ?: file_get_contents($file);
 	
-	$title = str_replace(['.md','.html','.tpl'],'',$title);
+	$title = str_replace(['.md','.html','.tpl'],'',$file);
 	if (strstr($title,'/')) {
 		$title = explode('/', $title)[1];
 	}
