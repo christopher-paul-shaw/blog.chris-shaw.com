@@ -35,6 +35,13 @@ while (false !== ($entry = readdir($handle))) {
 	$title = explode('__',$title)[1];
 	$title = str_replace('-',' ',$title);
 	$title = ucwords($title);
+	
+	
+	$article = <<<HEREDOC
+	# {$title}
+	{$article}
+HEREDOC;
+	
 	$articles[$entry] = [
 		'title' => $title, 
 		'summary' => $parser->text($summary),
@@ -48,7 +55,8 @@ foreach ($articles as $file => $data) {
 	$pages[] = $filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
 	<div class="u-padding--small  c-box--border u-theme-white u-margin-bottom--tiny">
-		<a href="./{$filename}" class="u-font">{$data['title']}</a>
+		<a href="./{$filename}" class="u-font">{$data['title']}</a><br />
+		{$data['summary']}
 	</div>
 HTML;
 }
@@ -72,18 +80,10 @@ function generatePage ($file, $raw_content=false){
 	}
 
 	$destination = "www/{$title}.html";
-
-	$parsedown = new Parsedown();
-
-	
-	$content = <<<HEREDOC
-	# {$title}
-	{$content}
-HEREDOC;
 	
 	$replace = [
 		'{{title}}' => $title,
-		'{{content}}' => $raw_content ?: $parsedown->text($content),
+		'{{content}}' => $raw_content,
 	];
 
 	$body = str_replace(array_keys($replace), array_values($replace), $body);
