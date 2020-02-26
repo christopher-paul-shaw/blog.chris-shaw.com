@@ -46,8 +46,8 @@ while (false !== ($entry = readdir($handle))) {
 	}
 
 		
-	$title = explode('__',$title)[1];
-	#$title = str_replace('.md','',$title);
+	list ($date, $title) = explode('__',$entry);
+	$title = str_replace('.md','',$title);
 	$title = str_replace('-',' ',$title);
 	$title = ucwords($title);
 	
