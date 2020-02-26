@@ -82,7 +82,7 @@ function generatePage ($file, $raw_content=false){
 	$destination = "www/{$title}.html";
 	
 	$replace = [
-		'{{title}}' => $title,
+		'{{title}}' => ucwords(str_replace('-',' ',$title)),
 		'{{content}}' => $raw_content,
 	];
 
