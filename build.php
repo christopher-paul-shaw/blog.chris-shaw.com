@@ -75,6 +75,12 @@ function generatePage ($file, $raw_content=false){
 
 	$parsedown = new Parsedown();
 
+	
+	$content = <<<HEREDOC
+	# {$title}
+	{$content}
+HEREDOC;
+	
 	$replace = [
 		'{{title}}' => $title,
 		'{{content}}' => $raw_content ?: $parsedown->text($content),
