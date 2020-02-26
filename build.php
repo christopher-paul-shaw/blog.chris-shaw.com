@@ -21,7 +21,7 @@ while (false !== ($entry = readdir($handle))) {
 $handle = opendir('assets');
 while (false !== ($entry = readdir($handle))) {
 	if (in_array($entry,['.','..'])) continue;
-	copy("assets/{$entry}","www/assets/{$entry}");
+	rename("./assets/{$entry}","./www/assets/{$entry}");
 }
 
 
