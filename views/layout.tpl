@@ -2,6 +2,7 @@
 	<head>
 		<title>{{title}}</title>
 		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="https://gist.githubusercontent.com/tuzz/3331384/raw/fc0160dd7ea0b4a861533c4d6c232f56291796a3/github.css" />
 		<script>
 		var xhr = new XMLHttpRequest();
 		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
