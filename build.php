@@ -47,7 +47,7 @@ $html = [];
 foreach ($articles as $file => $data) {	
 	$pages[] = $filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
-	<div class="u-padding--small  c-box--border u-theme-white">
+	<div class="u-padding--small  c-box--border u-theme-white u-margin-bottom--tiny">
 		<a href="./{$filename}" class="u-font">{$data['title']}</a>
 	</div>
 HTML;
