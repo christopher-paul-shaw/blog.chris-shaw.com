@@ -45,8 +45,9 @@ while (false !== ($entry = readdir($handle))) {
 		$summary = '';
 	}
 
-	$title = explode('.',$entry)[0];
+		
 	list($date, $title) = explode('__',$title);
+	$title = str_replace('.'.end($entry)),'',$title);
 	$title = str_replace('-',' ',$title);
 	$title = ucwords($title);
 	
