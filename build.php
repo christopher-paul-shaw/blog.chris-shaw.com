@@ -2,7 +2,7 @@
 
 include 'Parsedown.php';
 mkdir('./www/');
-mkdir('./assets/');
+mkdir('./www/assets/');
 
 $pages = [];
 /*
