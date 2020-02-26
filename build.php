@@ -46,15 +46,14 @@ while (false !== ($entry = readdir($handle))) {
 	}
 
 		
-	list($date, $title) = explode('__',$title);
-	$title = str_replace('.md','',$title);
+	$title = explode('__',$title)[1];
+	#$title = str_replace('.md','',$title);
 	$title = str_replace('-',' ',$title);
 	$title = ucwords($title);
 	
 	
 	$article = <<<HEREDOC
 # {$title}
-Posted on {$date}
 {$article}
 HEREDOC;
 	
