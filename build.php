@@ -56,7 +56,7 @@ while (false !== ($entry = readdir($handle))) {
 {$article}
 HEREDOC;
 	
-	$artilce = explode('--DATA--',$article)[0];
+	$article = explode('--DATA--',$article)[0];
 	
 	$articles[$entry] = [
 		'title' => $title, 
