@@ -46,7 +46,7 @@ while (false !== ($entry = readdir($handle))) {
 	}
 
 	$title = explode('.',$entry)[0];
-	$title = explode('__',$title)[1];
+	list($date, $title) = explode('__',$title);
 	$title = str_replace('-',' ',$title);
 	$title = ucwords($title);
 	
@@ -59,7 +59,8 @@ HEREDOC;
 	$article = explode('--DATA--',$article)[0];
 	
 	$articles[$entry] = [
-		'title' => $title, 
+		'title' => $title,
+		'date' => $date,
 		'summary' => $parser->text($summary),
 		'article' => $parser->text($article),
 	];
@@ -71,7 +72,7 @@ foreach ($articles as $file => $data) {
 	$pages[] = $filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
 	<div class="u-padding--small  c-box--border u-theme-white u-margin-bottom--tiny">
-		<a href="./{$filename}" class="u-font u-font-size--charlie">{$data['title']}</a><br />
+		<a href="./{$filename}" class="u-font u-font-size--delta">{$data['title']}</a><br />
 		{$data['summary']}
 	</div>
 HTML;
