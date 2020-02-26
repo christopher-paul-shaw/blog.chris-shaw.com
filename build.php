@@ -2,7 +2,7 @@
 
 include 'Parsedown.php';
 mkdir('./www/');
-mkdir('./asset/');
+mkdir('./assets/');
 
 $pages = [];
 /*
@@ -21,7 +21,7 @@ while (false !== ($entry = readdir($handle))) {
 $handle = opendir('assets');
 while (false !== ($entry = readdir($handle))) {
 	if (in_array($entry,['.','..'])) continue;
-	copy("asset/{$entry}","www/asset/{$entry}");
+	copy("assets/{$entry}","www/assets/{$entry}");
 }
 
 
