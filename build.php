@@ -38,8 +38,8 @@ while (false !== ($entry = readdir($handle))) {
 	
 	
 	$article = <<<HEREDOC
-	# {$title}
-	{$article}
+# {$title}
+{$article}
 HEREDOC;
 	
 	$articles[$entry] = [
