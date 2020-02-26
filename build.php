@@ -2,6 +2,7 @@
 
 include 'Parsedown.php';
 mkdir('./www/');
+mkdir('./asset/');
 
 $pages = [];
 /*
@@ -12,6 +13,19 @@ while (false !== ($entry = readdir($handle))) {
 	$pages[] = generatePage('views/'.$entry);
 }
  */
+
+
+
+
+# Copy Assets
+$handle = opendir('assets');
+while (false !== ($entry = readdir($handle))) {
+	if (in_array($entry,['.','..'])) continue;
+	copy("asset/{$entry}","www/asset/{$entry}");
+}
+
+
+
 # Convert Posts To Pages
 $handle = opendir('data');
 $parser = new Parsedown();
