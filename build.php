@@ -43,25 +43,19 @@ while (false !== ($entry = readdir($handle))) {
 }
 
 krsort($articles);
-print_r($articles);
 $html = [];
 foreach ($articles as $file => $data) {	
 	$pages[] = $filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
-	<a href="./{$filename}">{$data['title']}</a><br />
+	<div class="u-padding--small  c-box--border u-theme-white">
+		<a href="./{$filename}" class="u-font">{$data['title']}</a>
+	</div>
 HTML;
 }
 $html = implode('',$html);
 generatePage('index',$html);
 
 file_put_contents('www/CNAME','blog.chris-shaw.com');
-
-
-
-print_r($pages);
-
-
-
 
 function generatePage ($file, $raw_content=false){
 
