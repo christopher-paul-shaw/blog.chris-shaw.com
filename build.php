@@ -5,18 +5,6 @@ mkdir('./www/');
 mkdir('./www/assets/');
 
 $pages = [];
-/*
-# Build Pages
-$handle = opendir('views');
-while (false !== ($entry = readdir($handle))) {
-	if (in_array($entry,['.','..','layout.tpl'])) continue;
-	$pages[] = generatePage('views/'.$entry);
-}
- */
-
-
-
-
 # Copy Assets
 $handle = opendir('assets');
 while (false !== ($entry = readdir($handle))) {
@@ -24,12 +12,9 @@ while (false !== ($entry = readdir($handle))) {
 	rename("./assets/{$entry}","./www/assets/{$entry}");
 }
 
-
-
 # Convert Posts To Pages
 $handle = opendir('data');
 $parser = new Parsedown();
-
 while (false !== ($entry = readdir($handle))) {
 	if (in_array($entry,['.','..'])) continue;	
 	$content = file_get_contents('data/'.$entry);
@@ -44,8 +29,7 @@ while (false !== ($entry = readdir($handle))) {
 		$article = $parts[0];
 		$summary = '';
 	}
-
-		
+	
 	list ($date, $title) = explode('__',$entry);
 	$title = str_replace('.md','',$title);
 	$title = str_replace('-',' ',$title);
