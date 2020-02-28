@@ -3,6 +3,7 @@
 		<title>{{title}}</title>
 		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
 		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<script>
 		var xhr = new XMLHttpRequest();
 		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
