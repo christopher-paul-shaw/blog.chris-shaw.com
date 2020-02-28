@@ -55,8 +55,8 @@ HEREDOC;
 krsort($articles);
 $html = [];
 $html[] = <<<HTML
-	<div class="u-padding--small  c-box--border-bottom u-theme-white u-margin-bottom--tiny">
-		<input id="search" class="u-width--12-12"/>
+	<div class="u-theme-white u-margin-bottom--tiny">
+		<input id="search" class="u-width--12-12 u-padding--small"/>
 	</div>
 	<style>
 		.hide {display: none;}
@@ -66,13 +66,13 @@ $html[] = <<<HTML
 		let articles = document.querySelectorAll(".article");
 	  	for (var i = 0; i < articles.length; i++) {
 		    let current = articles[i]; 
-		    let title = current.querySelector("title").innerHTML;  
+		    let title = current.querySelectorAll("a")[0].innerHTML;  
 		    if(title.includes(this.value)) {
 		      current.classList.remove('hide');
 		    }
 		    else {
 		      current.classList.add('hide');
-		    }
+		    } 
 		}
 	});
 	</script>
