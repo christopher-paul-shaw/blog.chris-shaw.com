@@ -54,6 +54,7 @@ while (false !== ($entry = readdir($handle))) {
 	
 	$article = <<<HEREDOC
 # {$title}
+Posted on {$date}
 {$article}
 HEREDOC;
 	
