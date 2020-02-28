@@ -54,10 +54,36 @@ HEREDOC;
 
 krsort($articles);
 $html = [];
+$html[] = <<<HTML
+	<div class="u-padding--small  c-box--border-bottom u-theme-white u-margin-bottom--tiny">
+		<input id="search" class="u-width--12-12"/>
+	</div>
+	<style>
+		.hide {display: none;}
+	</style>
+	<script>
+	document.getElementById("search").addEventListener("keyup", function(){
+		let articles = document.querySelectorAll(".article");
+	  	for (var i = 0; i < articles.length; i++) {
+		    let current = articles[i]; 
+		    let title = current.innerHTML;  
+		    if(title.includes(this.value)) {
+		      current.classList.remove('hide');
+		    }
+		    else {
+		      current.classList.add('hide');
+		    }
+		}
+	});
+	</script>
+
+HTML;
+
+
 foreach ($articles as $file => $data) {	
 	$pages[] = $filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
-	<div class="u-padding--small  c-box--border u-theme-white u-margin-bottom--tiny">
+	<div class="js-article u-padding--small  c-box--border u-theme-white u-margin-bottom--tiny">
 		<a href="./{$filename}" class="u-font u-font-size--delta">{$data['title']}</a><br />
 		{$data['summary']}
 	</div>
