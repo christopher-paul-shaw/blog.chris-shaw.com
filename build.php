@@ -47,7 +47,7 @@ HEREDOC;
 	$articles[$entry] = [
 		'title' => $title,
 		'date' => $date,
-		'summary' => $parser->text($summary),
+		'summary' => $summary,
 		'article' => $parser->text($article),
 	];
 }
@@ -86,7 +86,7 @@ foreach ($articles as $file => $data) {
 	$pages[] = $filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
 	<div class="article u-padding--small  c-box--border u-theme-white u-margin-bottom--tiny">
-		<a href="./{$filename}" class="u-font u-font-size--delta title">{$data['title']}</a><br />
+		<a href="./{$filename}" class="u-font u-font-size--delta title">{$data['title']}</a>
 		{$data['summary']}
 	</div>
 HTML;
