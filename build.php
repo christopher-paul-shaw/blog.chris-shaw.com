@@ -56,7 +56,7 @@ krsort($articles);
 $html = [];
 $html[] = <<<HTML
 	<div class="u-theme-white u-margin-bottom--tiny">
-		<input id="search" class="u-width--12-12 u-padding--small" placeholder="Search Term"/>
+		<input id="search" class="u-width--12-12 u-padding--small" autocomplete="off" placeholder="Search Term"/>
 	</div>
 	<style>
 		.hide {display: none;}
