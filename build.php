@@ -66,7 +66,7 @@ $html[] = <<<HTML
 		let articles = document.querySelectorAll(".article");
 	  	for (var i = 0; i < articles.length; i++) {
 		    let current = articles[i]; 
-		    let title = current.innerHTML;  
+		    let title = current.querySelector("title").innerHTML;  
 		    if(title.includes(this.value)) {
 		      current.classList.remove('hide');
 		    }
@@ -83,8 +83,8 @@ HTML;
 foreach ($articles as $file => $data) {	
 	$pages[] = $filename = generatePage($file,$data['article']);
 	$html[] = <<<HTML
-	<div class="js-article u-padding--small  c-box--border u-theme-white u-margin-bottom--tiny">
-		<a href="./{$filename}" class="u-font u-font-size--delta">{$data['title']}</a><br />
+	<div class="article u-padding--small  c-box--border u-theme-white u-margin-bottom--tiny">
+		<a href="./{$filename}" class="u-font u-font-size--delta title">{$data['title']}</a><br />
 		{$data['summary']}
 	</div>
 HTML;
