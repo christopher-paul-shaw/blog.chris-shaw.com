@@ -27,7 +27,7 @@ Swapfiles work as secondary memory when allocated ram is exhausted, Swap should 
 6.  Add Swapfile to fstab to enable mount on boot
 
 	sudo vi /etc/fstab
-
+	
 Append the following line 
 
 	/swapfile swap swap defaults 0 0
