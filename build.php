@@ -36,11 +36,13 @@ while (false !== ($entry = readdir($handle))) {
 	$title = ucwords($title);
 	
 	$datetime = new DateTime($date);
-	$nice_date = $datetime->format("l \t\h\e jS F Y");
+	$nice_date = $datetime->format("l \the jS F Y");
 	$article = <<<HEREDOC
 # {$title}
 Posted on *{$nice_date}*
 {$article}
+
+[<< Back]: ./
 HEREDOC;
 	
 	$article = explode('--DATA--',$article)[0];
