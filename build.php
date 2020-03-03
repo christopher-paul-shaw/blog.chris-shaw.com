@@ -42,7 +42,7 @@ while (false !== ($entry = readdir($handle))) {
 Posted on *{$nice_date}*
 {$article}
 
-[<< Back]: https://blog.chris-shaw.com
+[<< Back](https://blog.chris-shaw.com)
 HEREDOC;
 	
 	$article = explode('--DATA--',$article)[0];
