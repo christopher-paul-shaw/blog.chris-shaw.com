@@ -35,10 +35,11 @@ while (false !== ($entry = readdir($handle))) {
 	$title = str_replace('-',' ',$title);
 	$title = ucwords($title);
 	
-	
+	$datetime = new DateTime($date);
+	$nice_date = $datetime->format("l jS F Y");
 	$article = <<<HEREDOC
 # {$title}
-Posted on {$date}
+Posted on {$nice_date}
 {$article}
 HEREDOC;
 	
