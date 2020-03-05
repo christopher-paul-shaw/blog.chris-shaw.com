@@ -38,11 +38,10 @@ while (false !== ($entry = readdir($handle))) {
 	$datetime = new DateTime($date);
 	$nice_date = $datetime->format("l jS F Y");
 	$article = <<<HEREDOC
+[<< Back](/)
 # {$title}
 Posted on *{$nice_date}*
 {$article}
-
-[<< Back](https://blog.chris-shaw.com)
 HEREDOC;
 	
 	$article = explode('--DATA--',$article)[0];
