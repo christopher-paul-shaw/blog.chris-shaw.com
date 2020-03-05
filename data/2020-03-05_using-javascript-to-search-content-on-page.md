@@ -28,4 +28,4 @@ A peice of javascript to allow easy searching of content on the current page
         });
         </script>
     
-   [!View Example] (https://codepen.io/cshaw/pen/rNVmrwY)
+   [View Example](https://codepen.io/cshaw/pen/rNVmrwY)
