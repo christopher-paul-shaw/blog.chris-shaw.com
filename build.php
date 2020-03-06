@@ -91,7 +91,7 @@ foreach ($articles as $file => $data) {
 		<a href="./{$filename}" class="u-font u-font-size--delta title">{$data['title']}</a>
 		<div>{$data['summary']}</div>
 		<div class="u-align__text--right">
-			<a href="./{$filename}" class="u-font">Read Full Article</a>
+			<a href="./{$filename}" class="u-font c-box u-theme-blue">Read Full Article</a>
 		</div>
 	</div>
 HTML;
