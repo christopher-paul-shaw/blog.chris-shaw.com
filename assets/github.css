@@ -16,10 +16,6 @@ a {
   text-decoration: none;
 }
 
-a.absent {
-  color: #cc0000;
-}
-
 a.anchor {
   display: block;
   padding-left: 30px;
