@@ -1,5 +1,4 @@
 <?php
-
 include 'Parsedown.php';
 mkdir('./www/');
 mkdir('./www/assets/');
@@ -102,7 +101,6 @@ generatePage('index',$html);
 file_put_contents('www/CNAME','blog.chris-shaw.com');
 
 function generatePage ($file, $raw_content=false){
-
 	$body = file_get_contents('views/layout.tpl');
 	$content = $raw_content ?: file_get_contents($file);
 	
@@ -127,4 +125,3 @@ function generatePage ($file, $raw_content=false){
 
 	return $title.'.html';
 }
-
