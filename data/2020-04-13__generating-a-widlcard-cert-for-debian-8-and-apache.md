@@ -1,6 +1,7 @@
 How to quickly generate a wildcard SSL Cert on a Debian System
 
 --PAGE--
+
 Using CertBot we can use letsencrypt to get a wilcard SSL Certificate, but on Debain 8 due to limitations of the system certbot cannot generate wildcard ones via the automated scripts.
 
 Instead you need to request a certificate and perform a manual dns challenge by adding a DNS TXT Record.
