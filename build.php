@@ -64,11 +64,11 @@ $html[] = <<<HTML
 	</style>
 	<script>
 document.getElementById("search").addEventListener("keyup", function(){
-  let searchable = document.querySelectorAll(".js-searchable");
+  let searchable = document.querySelectorAll(".article");
 	for (var i = 0; i < searchable.length; i++) {
-    let current = searchable[i]; 
-    let title = current.innerHTML;  
-    let similarity = string_similarity(title, this.value);
+   	let current = searchable[i]; 
+	let title = current.querySelectorAll("a")[0].innerHTML; 
+    	let similarity = string_similarity(title, this.value);
     if(similarity > 0.000000000) {
       current.classList.remove('hide');
 
