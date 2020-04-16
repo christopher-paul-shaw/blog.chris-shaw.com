@@ -63,21 +63,48 @@ $html[] = <<<HTML
 		.hide {display: none;}
 	</style>
 	<script>
-	document.getElementById("search").addEventListener("keyup", function(){
-		let articles = document.querySelectorAll(".article");
-	  	for (var i = 0; i < articles.length; i++) {
-		    let current = articles[i]; 
-		    let title = current.querySelectorAll("a")[0].innerHTML;  
-		    let haystack = title.toLowerCase();
-		    let needle = this.value.toLowerCase();
-		    if(haystack.includes(needle)) {
-		      current.classList.remove('hide');
-		    }
-		    else {
-		      current.classList.add('hide');
-		    } 
-		}
-	});
+document.getElementById("search").addEventListener("keyup", function(){
+  let searchable = document.querySelectorAll(".js-searchable");
+	for (var i = 0; i < searchable.length; i++) {
+    let current = searchable[i]; 
+    let title = current.innerHTML;  
+    let similarity = string_similarity(title, this.value);
+    if(similarity > 0.000000000) {
+      current.classList.remove('hide');
+
+    }
+    else {
+      current.classList.add('hide');
+    }
+	}
+});
+
+function get_bigrams(string){
+  var s = string.toLowerCase()
+  var v = s.split('');
+  for(var i=0; i<v.length; i++){ v[i] = s.slice(i, i + 2); }
+  return v;
+}
+
+function string_similarity(str1, str2){
+  if(str1.length>0 && str2.length>0){
+    var pairs1 = get_bigrams(str1);
+    var pairs2 = get_bigrams(str2);
+    var union = pairs1.length + pairs2.length;
+    var hits = 0;
+    for(var x=0; x<pairs1.length; x++){
+      for(var y=0; y<pairs2.length; y++){
+        if(pairs1[x]==pairs2[y]) hits++;
+    }}
+    if(hits>0) return ((2.0 * hits) / union);
+  }
+  return 0.0
+}
+
+
+
+
+
 	</script>
 
 HTML;
