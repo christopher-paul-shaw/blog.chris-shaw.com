@@ -69,7 +69,7 @@ document.getElementById("search").addEventListener("keyup", function(){
    	let current = searchable[i]; 
 	let title = current.querySelectorAll("a")[0].innerHTML; 
     	let similarity = string_similarity(title, this.value);
-    if(similarity > 0.8) {
+    if(similarity > 0.1) {
       current.classList.remove('hide');
 
     }
