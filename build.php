@@ -63,49 +63,21 @@ $html[] = <<<HTML
 		.hide {display: none;}
 	</style>
 	<script>
-document.getElementById("search").addEventListener("keyup", function(){
-  let searchable = document.querySelectorAll(".article");
-	for (var i = 0; i < searchable.length; i++) {
-   	let current = searchable[i]; 
-	let title = current.querySelectorAll("a")[0].innerHTML; 
-    	let similarity = string_similarity(title, this.value);
-	current.setAttribute('data-similarity', similarity);
-    if(similarity > 0.1) {
-      current.classList.remove('hide');
-
-    }
-    else {
-      current.classList.add('hide');
-    }
-	}
-});
-
-function get_bigrams(string){
-  var s = string.toLowerCase()
-  var v = s.split('');
-  for(var i=0; i<v.length; i++){ v[i] = s.slice(i, i + 2); }
-  return v;
-}
-
-function string_similarity(str1, str2){
-  if(str1.length>0 && str2.length>0){
-    var pairs1 = get_bigrams(str1);
-    var pairs2 = get_bigrams(str2);
-    var union = pairs1.length + pairs2.length;
-    var hits = 0;
-    for(var x=0; x<pairs1.length; x++){
-      for(var y=0; y<pairs2.length; y++){
-        if(pairs1[x]==pairs2[y]) hits++;
-    }}
-    if(hits>0) return ((2.0 * hits) / union);
-  }
-  return 0.0
-}
-
-
-
-
-
+	document.getElementById("search").addEventListener("keyup", function(){
+		let articles = document.querySelectorAll(".article");
+	  	for (var i = 0; i < articles.length; i++) {
+		    let current = articles[i]; 
+		    let title = current.querySelectorAll("a")[0].innerHTML;  
+		    let haystack = title.toLowerCase();
+		    let needle = this.value.toLowerCase();
+		    if(haystack.includes(needle)) {
+		      current.classList.remove('hide');
+		    }
+		    else {
+		      current.classList.add('hide');
+		    } 
+		}
+	});
 	</script>
 
 HTML;
@@ -116,7 +88,7 @@ foreach ($articles as $file => $data) {
 	$html[] = <<<HTML
 	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
 		<a href="./{$filename}" class="u-font u-font-size--delta title">{$data['title']}</a>
-		<div>{$data['summary']}</div>
+		<div class="u-margin-bottom--small">{$data['summary']}</div>
 		<div class="u-align__text--right">
 			<a href="./{$filename}" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
 		</div>
