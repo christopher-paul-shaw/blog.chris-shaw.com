@@ -82,10 +82,11 @@ $html[] = <<<HTML
 
 HTML;
 
-
+$count = 0;
+$page = 0;
 foreach ($articles as $file => $data) {	
 	$pages[] = $filename = generatePage($file,$data['article']);
-	$html[] = <<<HTML
+	$content = <<<HTML
 	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
 		<a href="./{$filename}" class="u-font u-font-size--delta title">{$data['title']}</a>
 		<div class="u-margin-bottom--small">{$data['summary']}</div>
@@ -94,6 +95,19 @@ foreach ($articles as $file => $data) {
 		</div>
 	</div>
 HTML;
+	$html[] = $content;
+	$html2[] = $content;
+	
+	
+	if ($count >= 10 || $count == count($articles)) {
+		$count = 0;
+		$page++;
+		
+		$html = implode('',$html2);
+		unset($html2);
+		generatePage('index-'.$page,$html);
+	}
+	
 }
 $html = implode('',$html);
 generatePage('index',$html);
