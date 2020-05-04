@@ -95,10 +95,7 @@ foreach ($articles as $file => $data) {
 		</div>
 	</div>
 HTML;
-	$html[] = $content;
-	$html2[] = $content;
-	
-	
+	$html[] = $content;	
 	if ($count >= 10) {
 		$count = 0;
 		$page++;
