@@ -99,12 +99,10 @@ HTML;
 	$html2[] = $content;
 	
 	
-	if ($count >= 10 || $count == count($articles)) {
+	if ($count >= 10) {
 		$count = 0;
 		$page++;
-		
-		$chunk = implode('',$html2);
-		unset($html2);
+		$chunk = implode('',$html);
 		generatePage('index-'.$page,$chunk);
 	}
 	
