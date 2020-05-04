@@ -103,9 +103,9 @@ HTML;
 		$count = 0;
 		$page++;
 		
-		$html = implode('',$html2);
+		$chunk = implode('',$html2);
 		unset($html2);
-		generatePage('index-'.$page,$html);
+		generatePage('index-'.$page,$chunk);
 	}
 	
 }
