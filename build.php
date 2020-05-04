@@ -85,6 +85,7 @@ HTML;
 $count = 0;
 $page = 0;
 foreach ($articles as $file => $data) {	
+	$count++;
 	$pages[] = $filename = generatePage($file,$data['article']);
 	$content = <<<HTML
 	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
@@ -102,6 +103,7 @@ HTML;
 		$chunk = implode('',$html);
 		generatePage('index-'.$page,$chunk);
 	}
+	
 	
 }
 $html = implode('',$html);
