@@ -81,7 +81,7 @@ HTML;
 	if ($count >= 10) {
 		$count = 0;
 		$page++;
-		$chunk = implode('',$html);
+		$chunk = implode('',$chunk);
 		generatePage('index-'.$page,$chunk);
 		$chunk = false;
 	}
