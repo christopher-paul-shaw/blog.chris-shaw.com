@@ -59,27 +59,6 @@ $html[] = <<<HTML
 	<div class="u-theme-white u-margin-bottom--tiny">
 		<input id="search" class="u-width--12-12 u-padding--small" autocomplete="off" placeholder="Search Term"/>
 	</div>
-	<style>
-		.hide {display: none;}
-	</style>
-	<script>
-	document.getElementById("search").addEventListener("keyup", function(){
-		let articles = document.querySelectorAll(".article");
-	  	for (var i = 0; i < articles.length; i++) {
-		    let current = articles[i]; 
-		    let title = current.querySelectorAll("a")[0].innerHTML;  
-		    let haystack = title.toLowerCase();
-		    let needle = this.value.toLowerCase();
-		    if(haystack.includes(needle)) {
-		      current.classList.remove('hide');
-		    }
-		    else {
-		      current.classList.add('hide');
-		    } 
-		}
-	});
-	</script>
-
 HTML;
 
 $count = 0;
