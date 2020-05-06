@@ -84,6 +84,7 @@ HTML;
 
 $count = 0;
 $page = 0;
+$articles_per_page = 10;
 foreach ($articles as $file => $data) {	
 	$count++;
 	$pages[] = $filename = generatePage($file,$data['article']);
@@ -96,12 +97,14 @@ foreach ($articles as $file => $data) {
 		</div>
 	</div>
 HTML;
-	$html[] = $content;	
+	$html[] = $content;
+	$chunk[] = $content;  
 	if ($count >= 10) {
 		$count = 0;
 		$page++;
 		$chunk = implode('',$html);
 		generatePage('index-'.$page,$chunk);
+		$chunk = false;
 	}
 	
 	
