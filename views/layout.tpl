@@ -17,7 +17,7 @@
 		}
 		xhr.send( null );
 		
-		var searchBox =  document.getElementById('elementId');
+		var searchBox =  document.getElementById('search');
 		if (typeof(searchBox) !='undefined') {
 			searchBox.addEventListener("keyup", function(){
 			let articles = document.querySelectorAll(".article");
