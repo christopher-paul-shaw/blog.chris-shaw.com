@@ -35,7 +35,7 @@
 	</body>
 	<script>
 		var searchBox =  document.getElementById('search');
-		if (typeof(searchBox) !='undefined') {
+		if (searchBox) {
 			searchBox.addEventListener("keyup", function(){
 			let articles = document.querySelectorAll(".article");
 				for (var i = 0; i < articles.length; i++) {
