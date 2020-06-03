@@ -17,6 +17,23 @@
 		}
 		xhr.send( null );
 		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			{{content}}
+		</div>
+	</body>
+	<script>
 		var searchBox =  document.getElementById('search');
 		if (typeof(searchBox) !='undefined') {
 			searchBox.addEventListener("keyup", function(){
@@ -35,19 +52,5 @@
 				}
 			});
 		}
-	
 		</script>
-	
-		<style>
-			.hide {display: none;}
-		</style>
-
-	
-	</head>
-
-	<body>
-		<div class="o-container u-margin-top--small markdown">
-			{{content}}
-		</div>
-	</body>
 </html>
