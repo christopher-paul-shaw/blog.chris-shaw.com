@@ -8,14 +8,14 @@ So we have a large table called example_table, we want to keep the table name, j
 
 1. Rename the origional table
 
-  RENAME TABLE example_table TO OLD_example_table;
+      RENAME TABLE example_table TO OLD_example_table;
   
 2. Create the new Table
 
-  CREATE TABLE example_table LIKE OLD_example_table;
+      CREATE TABLE example_table LIKE OLD_example_table;
  
 3. Get Rid of the Old Table
 
-  DROP TABLE OLD_example_table;
+      DROP TABLE OLD_example_table;
   
 Now you will have a new table of the same structure and name as the old one, just without all the rows.
