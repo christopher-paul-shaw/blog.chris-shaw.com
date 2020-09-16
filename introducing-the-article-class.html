@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>Blog \ Introducing The Article Class</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Introducing The Article Class</h1>
+<p>Posted on <em>Sunday 7th October 2018</em></p>
+<h1>What does Article Do?</h1>
+<p>It accesses files such as markdown files within a predefined directory, gets the content and other information and returns it back to the user with simple to use functions.</p>
+<ul>
+<li>Lists Articles</li>
+<li>Search Articles</li>
+<li>Load By Filename</li>
+<li>Load By Name</li>
+<li>Can specify what extensions to work with.</li>
+</ul>
+<p>The intent of this class is to be used in several projects which access articles, allowing the functionality to be quickly added rather than recreated each time.</p>
+<h2>Some Example Uses</h2>
+<ul>
+<li>Blog</li>
+<li>Wiki</li>
+</ul>
+<h1>Usage</h1>
+<h2>List / Search</h2>
+<pre><code>use CPS\Article;
+
+$dir = "./where/your/files/are";
+$article = new Article($dir);
+$results = $article-&gt;list("your term here");</code></pre>
+<h2>Load (By Name or Filename);</h2>
+<pre><code>use CPS\Article;
+
+$dir = "./where/your/files/are";
+$article = new Article($dir);
+$results = $article-&gt;load("Article Name");</code></pre>
+<h1>How to Install</h1>
+<h2>1. Composer</h2>
+<p>The preferred method is using composer (<a href="https://getcomposer.org/">https://getcomposer.org/</a>) and can be installed using the following command</p>
+<pre><code>composer require christopher-paul-shaw/article </code></pre>
+<h2>2. Cloning</h2>
+<p>You can also clone the repository from github</p>
+<pre><code>git clone git@github.com:christopher-paul-shaw/Article.git</code></pre>
+<p><strong>Url:</strong> <a href="https://github.com/christopher-paul-shaw/Article/">https://github.com/christopher-paul-shaw/Article/</a></p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

@@ -1,0 +1,132 @@
+<html>
+	<head>
+		<title>Blog \ Index 1</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+				<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./truncate-large-tables-in-mysql.html" class="u-font u-font-size--delta title">Truncate Large Tables In Mysql</a>
+		<div class="u-margin-bottom--small">Large tables in mysql can be very slow to truncate, but this process can be easily made quicker.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./truncate-large-tables-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./see-table-sizes-in-mysql.html" class="u-font u-font-size--delta title">See Table Sizes In Mysql</a>
+		<div class="u-margin-bottom--small">How to see the size of all tables in the database.
+</div>
+		<div class="u-align__text--right">
+			<a href="./see-table-sizes-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./get-mysql-database-size.html" class="u-font u-font-size--delta title">Get Mysql Database Size</a>
+		<div class="u-margin-bottom--small">SQL queries you can run to get the Size of MySQl Databases
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./get-mysql-database-size.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./remove-lines-containing-string-from-file.html" class="u-font u-font-size--delta title">Remove Lines Containing String From File</a>
+		<div class="u-margin-bottom--small">How to remove lines from a file which match a search parameter
+</div>
+		<div class="u-align__text--right">
+			<a href="./remove-lines-containing-string-from-file.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./apache-virtualhost-to-point-all-subdomains-to-https.html" class="u-font u-font-size--delta title">Apache Virtualhost To Point All Subdomains To Https</a>
+		<div class="u-margin-bottom--small">VirtualHost template for directing all traffic on HTTP (Port 80) to HTTPS (443)
+</div>
+		<div class="u-align__text--right">
+			<a href="./apache-virtualhost-to-point-all-subdomains-to-https.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./generating-a-wildcard-cert-for-debian-8-and-apache.html" class="u-font u-font-size--delta title">Generating A Wildcard Cert For Debian 8 And Apache</a>
+		<div class="u-margin-bottom--small">How to quickly generate a wildcard SSL Cert on a Debian System
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./generating-a-wildcard-cert-for-debian-8-and-apache.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./bash-cli-download-speed-test.html" class="u-font u-font-size--delta title">Bash Cli Download Speed Test</a>
+		<div class="u-margin-bottom--small">A bash script to allow monitoring of downloads speeds.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./bash-cli-download-speed-test.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./using-javascript-to-search-content-on-page.html" class="u-font u-font-size--delta title">Using Javascript To Search Content On Page</a>
+		<div class="u-margin-bottom--small">A peice of javascript to allow easy searching of content on the current page
+</div>
+		<div class="u-align__text--right">
+			<a href="./using-javascript-to-search-content-on-page.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./blocking-access-to-port-for-all-ips-except-one.html" class="u-font u-font-size--delta title">Blocking Access To Port For All Ips Except One</a>
+		<div class="u-margin-bottom--small">How to only allow one IP to access a port on a linux server using iptables
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./blocking-access-to-port-for-all-ips-except-one.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./add-swap-file-on-linux.html" class="u-font u-font-size--delta title">Add Swap File On Linux</a>
+		<div class="u-margin-bottom--small">How to add a swapfile to linux based system or vps.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./add-swap-file-on-linux.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

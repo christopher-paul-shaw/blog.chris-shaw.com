@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Blog \ Introducing The Input Class</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Introducing The Input Class</h1>
+<p>Posted on <em>Monday 4th February 2019</em></p>
+<p>Introducing the Input class, an Object Oriented approach to Securing Input in php.</p>
+<p>The problem with how PHP handles input, its that it puts the data in globally accessible arrays, including $_POST and $_GET.
+Not only does our code have access to everything in these arrays, so does any third party code you include.</p>
+<h1>Summary</h1>
+<p>This class blanks out the Super Globals $_POST and $_GET and stores their contents within the class. Allowing better control over the input and what code can access it.</p>
+<h1>Basic Usage</h1>
+<pre><code>$input = new Input();
+echo $input-&gt;get('id');
+echo $input-&gt;post('id');</code></pre>
+<h1>Default Parameters</h1>
+<p>Default Parameters can be passed as the second option</p>
+<pre><code>$input-&gt;get('test','default value here');</code></pre>
+<h1>Sanitization</h1>
+<p>Strips Tags by default, can be disabled by passing false as third option.</p>
+<pre><code>$input-&gt;get('test',false,false);</code></pre>
+<h1>Test</h1>
+<p>As features are added, there will be new tests to prove they work as intended. 
+You can run the tests yourself using the following command.</p>
+<pre><code>vendor/bin/phpunit test</code></pre>
+<h1>Install</h1>
+<pre><code>composer require christopher-paul-shaw/input</code></pre>
+<h1>Links</h1>
+<ul>
+<li><a href="https://packagist.org/packages/christopher-paul-shaw/input">https://packagist.org/packages/christopher-paul-shaw/input</a></li>
+<li><a href="https://github.com/christopher-paul-shaw/Input">https://github.com/christopher-paul-shaw/Input</a></li>
+</ul>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

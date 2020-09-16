@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<title>Blog \ Php Class Datastore</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Php Class Datastore</h1>
+<p>Posted on <em>Monday 9th July 2018</em></p>
+<h1>Why would you use DataStore</h1>
+<p>DataStore in its current version works only with the filesystem, which although not scalable for larger datasets, can be of use for simpler systems.</p>
+<ul>
+<li>Low overhead compared to a database</li>
+<li>Capable of Creating, Reading, Updating, Deleting and Searching through data</li>
+<li>Can be easily extended to add additional functionality</li>
+<li>Simple to Backup and Restore Data</li>
+</ul>
+<h2>Some Example Uses</h2>
+<ul>
+<li>User Login System</li>
+<li>Blog / Guesbook </li>
+<li>System Logging</li>
+</ul>
+<h1>History Timeline for DataStore</h1>
+<p>DataStore is the evolution of a class called Entity from (<a href="https://webpi.chris-shaw.com">https://webpi.chris-shaw.com</a>) Entity was a raw class to standardise how the WebPi software would interact with data stored within the filesystem</p>
+<ul>
+<li>Started Life as Entity.php in WebPi ()</li>
+<li>Became a general way for WebPi to access data and becoming basis for an authentication class.</li>
+<li>Was moved to its own repository with unit tests to be shared between progects</li>
+<li>Renamed to DataStore and Added to packagest for composer install</li>
+</ul>
+<h1>Usage</h1>
+<h2>Creating</h2>
+<pre><code>$payload = [
+       'id_entity' =&gt; 'testId',
+       'test' =&gt; 'case'
+];
+
+$dataStore = new DataStore('exampleID');
+$dataStore&gt;create($payload);</code></pre>
+<h2>Read</h2>
+<pre><code>$dataStore = new DataStore('exampleID');
+$dataStore&gt;getValue('fieldname');</code></pre>
+<h2>Updating</h2>
+<pre><code>$dataStore = new DataStore('exampleID');
+$dataStore&gt;getValue('field', 'value');</code></pre>
+<h2>Deleting</h2>
+<pre><code>$dataStore = new DataStore('exampleID');
+$dataStore&gt;delete();</code></pre>
+<h2>Searching</h2>
+<pre><code>$filters = [
+    ['field','=','value'],
+    ['field','&gt;','value']
+];
+
+$search = new DataStore();
+$results = $search-&gt;search();</code></pre>
+<h1>How to Install</h1>
+<h2>1. Composer</h2>
+<p>The preferred method is using composer (<a href="https://getcomposer.org/">https://getcomposer.org/</a>) and can be insalled using the following command</p>
+<pre><code>composer require christopher-paul-shaw/datastore </code></pre>
+<h2>2. Cloning</h2>
+<p>You can also clone the repository from github</p>
+<pre><code>git clone git@github.com:christopher-paul-shaw/DataStore.git</code></pre>
+<p><strong>Url:</strong> <a href="https://github.com/christopher-paul-shaw/DataStore/">https://github.com/christopher-paul-shaw/DataStore/</a></p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

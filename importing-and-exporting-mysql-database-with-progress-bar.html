@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>Blog \ Importing And Exporting Mysql Database With Progress Bar</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Importing And Exporting Mysql Database With Progress Bar</h1>
+<p>Posted on <em>Monday 21st May 2018</em></p>
+<p>When importing and dumping mysql databases, it can take a while to perform such tasks and common MySQL clients dont tend to handle large databases quite well, appearing to just hang. </p>
+<p>Instead its easier and more informative to perform these actions on the command line and pipe the output through Pipe Viewer, so you can see the progress and estimated completion time.</p>
+<h1>Install Pipe Viewer</h1>
+<pre><code>sudo apt-get update
+sudo apt-get install pv</code></pre>
+<h1>Import Database</h1>
+<p>Replace the uppercase characters with your credentials.</p>
+<pre><code>pv FILE.sql | mysql -uUSERNAME -pPASSWORD DATABASENAME</code></pre>
+<h1>Export Database</h1>
+<p>Replace the uppercase characters with your credentials and the estimated size of the database.</p>
+<pre><code>mysqldump -u USERNAME -pPASSWORD DATABASE | pv --progress --size ESTIMATEDSIZEINGBg -t -e -r -a &gt; DATABASE-dump.sql</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

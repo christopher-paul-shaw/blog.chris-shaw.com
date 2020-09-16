@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>Blog \ Transfer Ssh Keys From Github To Server</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Transfer Ssh Keys From Github To Server</h1>
+<p>Posted on <em>Tuesday 21st May 2019</em></p>
+<p>When working on multiple servers from multiple machines, it can sometimes be a little of a chore to keep ssh keys up to date.</p>
+<p>Normally if you connected to a machine, you would copy your public ssh key over once using the ssh-copy-id command, enter your password then the next time you ssh in 
+you dont need to use the password.</p>
+<pre><code>ssh-copy-id user@server.com</code></pre>
+<p>This is a simple tool, but when theres lots of servers, it makes sence to have one true source of ssh keys. 
+Since most developers use github, we can copy the publicly accessible keys and append to the authorized_keys file.</p>
+<p>This means we can do the task easily, and authorize all devices we use for development on the on the current server</p>
+<p>From your home directory run the following:</p>
+<pre><code>curl https://github.com/{github-username}.keys &gt;&gt; .ssh/authorized_keys</code></pre>
+<p>This does a curl request to get the keys from github, and appends them to the authorized_keys file</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

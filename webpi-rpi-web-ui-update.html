@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>Blog \ Webpi Rpi Web Ui Update</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Webpi Rpi Web Ui Update</h1>
+<p>Posted on <em>Tuesday 22nd May 2018</em></p>
+<p>Going forward basic functionality with the FileSystem will be handled within a new Entity class, which will contain basic create, update, search and delete features which will be extended by other class, this currently includes the User Class, responsible for all Accounts and Authentication.</p>
+<h1>Upgrade</h1>
+<pre><code>git checkout master
+git pull
+composer update</code></pre>
+<h1>Upgrade to Release</h1>
+<p>If you want to stay with the current release only, then checkout the release.</p>
+<pre><code>git checkout 1.0.2
+composer update</code></pre>
+<h1>Fresh Install</h1>
+<pre><code>git clone git@github.com:christopher-paul-shaw/WebPi.git &amp;&amp; cd WebPi
+composer install</code></pre>
+<h1>Download</h1>
+<ul>
+<li><a href="https://github.com/christopher-paul-shaw/WebPi/archive/1.0.2.zip">https://github.com/christopher-paul-shaw/WebPi/archive/1.0.2.zip</a> </li>
+<li><a href="https://github.com/christopher-paul-shaw/WebPi/archive/1.0.2.tar.gz">https://github.com/christopher-paul-shaw/WebPi/archive/1.0.2.tar.gz</a></li>
+</ul>
+<h1>Demo</h1>
+<p>URL: <a href="https://demo.webpi.chris-shaw.com/">https://demo.webpi.chris-shaw.com/</a>
+Email: admin@web-pi
+Password: password</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>Blog \ How To Administer User Accounts In Mysql</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>How To Administer User Accounts In Mysql</h1>
+<p>Posted on <em>Tuesday 29th January 2019</em></p>
+<p>When working with a mysql database, you may need to add additional users for many reasons, following is a selection of commands to do this simply. </p>
+<p>Change username password,database_name and table_name to the real values.</p>
+<h1>Create a User</h1>
+<pre><code>CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';</code></pre>
+<h1>Add All Privileges</h1>
+<pre><code>GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';</code></pre>
+<h1>Reload Privileges</h1>
+<pre><code>FLUSH PRIVILEGES;</code></pre>
+<h1>Add Specific Permission</h1>
+<pre><code>GRANT type_of_permission ON database_name.table_name TO ‘username’@'localhost’;</code></pre>
+<h1>Remove Specific Permission</h1>
+<pre><code>REVOKE type_of_permission ON database_name.table_name FROM ‘username’@‘localhost’;</code></pre>
+<h1>Delete User</h1>
+<pre><code>DROP USER ‘username’@‘localhost’;</code></pre>
+<h1>Show Permissions</h1>
+<pre><code>SHOW GRANTS username;</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>Blog \ Installing Php 7.2 On Debian 8 Jessie And Debian 9 Stretch</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Installing Php 7.2 On Debian 8 Jessie And Debian 9 Stretch</h1>
+<p>Posted on <em>Wednesday 7th March 2018</em></p>
+<p>This article is for installing PHP 7.2 on debian 8, if your looking to install 7.1 instead please look at <a href="https://www.chris-shaw.com/blog/how-to-install-php-7.1-on-debian-8">https://www.chris-shaw.com/blog/how-to-install-php-7.1-on-debian-8</a>.</p>
+<p>Similar to 7.1, we will be using <a href="https://packages.sury.org/php/"><strong>Ondřej Surý</strong></a> repository to install the 7.2 version of PHP. This method works both on Debian 8 (Jessie) and Debian 9 (Stretch)</p>
+<p>All we need to do is add the PPA Repository to Debian</p>
+<h2>Adding this Repository to your system</h2>
+<p>You can update your system with packages from this PPA by adding ppa:ondrej/php to your system's Software Sources.</p>
+<pre><code>sudo apt-get install apt-transport-https lsb-release ca-certificates
+sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list</code></pre>
+<h2>Installing PHP</h2>
+<p>Now as we have ondrej's PPA available as a source, we can go ahead and install PHP as we normally would with apt-get, we just need to specify the version we want to use.</p>
+<pre><code>sudo apt-get update
+sudo apt-get install php7.2</code></pre>
+<h1>Installing Some Additional Packages</h1>
+<pre><code>sudo apt-get install php7.2-cli php7.2-common php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-xml</code></pre>
+<h1>Verify Install</h1>
+<p>To verify PHP7.2 is installed, just run the following to see the version you are using.</p>
+<pre><code>php -v</code></pre>
+<h1>Enabling</h1>
+<p>You will need to enable for apache to use.</p>
+<p>Disable old version, replace php5 with your old version</p>
+<pre><code>a2dismod php5</code></pre>
+<p>Enable new </p>
+<pre><code>a2enmod php7.2</code></pre>
+<p>Restart Apache</p>
+<pre><code>service apache2 restart</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

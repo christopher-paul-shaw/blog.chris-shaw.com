@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Blog \ Checking Mysql Database Exists From Cli</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Checking Mysql Database Exists From Cli</h1>
+<p>Posted on <em>Wednesday 26th February 2020</em></p>
+<h2>A little background</h2>
+<p>As part of a deployment script, needed a way to detect if a database already exisit, and if not, create and seed the database.</p>
+<h2>Simple Methods</h2>
+<h3>1) Show Databases</h3>
+<p>This consists of just running the SHOW DATABASEs command and piping through to grep to search for the database name.</p>
+<pre><code>mysql -uUSER -pPASSWORD-e "SHOW DATABASES" | grep DATABASENAME</code></pre>
+<h3>2) Using mysqlshow</h3>
+<p>This uses the mysql show command to check for the database and echo a string if found</p>
+<pre><code>mysqlshow -uroot -psecret "DATABASENAME" &gt; /dev/null 2&gt;&amp;1 &amp;&amp; echo "Database exists."</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

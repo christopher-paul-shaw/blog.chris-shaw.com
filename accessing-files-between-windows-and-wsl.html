@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title>Blog \ Accessing Files Between Windows And Wsl</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Accessing Files Between Windows And Wsl</h1>
+<p>Posted on <em>Wednesday 6th December 2017</em></p>
+<h1>Accessing Windows Files in Linux</h1>
+<p>Ubuntu in WSL automatically mounts the windows drive of the host OS under </p>
+<pre><code>/mnt/c/</code></pre>
+<p>To make it more usable, I find its easier to symlink what directories you need to your linux home</p>
+<p>For example</p>
+<pre><code>ln -s "C:\Users\username\Projects" "\home\username\Projects"</code></pre>
+<h1>Accessing Linux Files in Windows</h1>
+<p>There has only been one reason I needed this, so I could use my ssh-key with MySQL Workbench.</p>
+<p>The files for the Ubuntu install are located in the following</p>
+<pre><code>C:\Users\&lt;username&gt;\AppData\Local\lxss</code></pre>
+<p>For Example, My SSH Key would be</p>
+<pre><code>C:\Users\Chris\AppData\Local\lxss\home\chris\.ssh\id_rsa</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

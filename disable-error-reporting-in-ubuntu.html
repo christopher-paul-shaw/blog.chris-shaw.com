@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>Blog \ Disable Error Reporting In Ubuntu</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Disable Error Reporting In Ubuntu</h1>
+<p>Posted on <em>Thursday 26th October 2017</em></p>
+<p><img src="https://www.chris-shaw.com/asset/images/articles/apport.png" alt="Error Reporting Photo" /></p>
+<p><strong><em>Be warned, Error Reporting is there to inform you when something is wrong, only continue if you accept any risk of doing so</em></strong></p>
+<h2>16.04 and Above</h2>
+<p>systemd ignores the Apport Config file, so we need to manage it with systemd.</p>
+<p>Disable</p>
+<pre><code>sudo systemctl disable apport.service
+systemctl mask apport.service</code></pre>
+<p>Re Enable</p>
+<pre><code>systemctl unmask apport.service
+sudo systemctl enable apport.service</code></pre>
+<h2>Previous Ubuntu Versions</h2>
+<p>Prior to to the introduction if systemd, we can enable / disable apport using its Config File.</p>
+<pre><code>sudo nano /etc/default/apport/</code></pre>
+<p>Then we need to change the enabled flag</p>
+<h3>Enable</h3>
+<pre><code>enabled=1</code></pre>
+<h3>Disable</h3>
+<pre><code>enabled=0</code></pre>
+<h2>Removing Apport</h2>
+<p>You also now have the option to Remove the Apport Program.</p>
+<h3>Remove</h3>
+<pre><code>sudo apt purge apport</code></pre>
+<h3>Reinstall</h3>
+<pre><code>sudo apt install apport</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

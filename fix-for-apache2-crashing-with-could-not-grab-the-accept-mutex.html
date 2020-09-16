@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>Blog \ Fix For Apache2 Crashing With Could Not Grab The Accept Mutex</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Fix For Apache2 Crashing With Could Not Grab The Accept Mutex</h1>
+<p>Posted on <em>Tuesday 14th May 2019</em></p>
+<p>I recently started getting this issue when I upgraded my server, I noticed that when I deployed to the server apache would stop every time, when reading the logs</p>
+<pre><code>[Tue May 14 09:21:58.066062 2019] [mpm_prefork:emerg] [pid 29308] (43)Identifier removed: AH00144: couldn't grab the accept mutex
+[Tue May 14 09:21:58.891316 2019] [core:alert] [pid 29304] AH00050: Child 29305 returned a Fatal error... Apache is exiting!</code></pre>
+<p>This was pointing to an issue with the mutex, not being accessible, there is a simple fix to this though.</p>
+<p>Edit /etc/apache2/apache2.conf and find Mutex, it may be missing or be set to</p>
+<pre><code>Mutex file:${APACHE_LOCK_DIR} default</code></pre>
+<p>Either add, or replace with the following </p>
+<pre><code>Mutex posixsem</code></pre>
+<p>Then restart Apache</p>
+<pre><code>sudo service apache2 restart</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Blog \ Proxy Traffic To Another Domain Using Htaccess</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Proxy Traffic To Another Domain Using Htaccess</h1>
+<p>Posted on <em>Tuesday 23rd July 2019</em></p>
+<p><strong>I am documenting this here as it was not apparent when researching this and took a while to find, hopefully this will make the answer more obvious for anyone needing it</strong></p>
+<p>If you want to server content from one domain on another domain, this can be achieved using mod_rewrite rules in Apache.
+This is done by using the [P] flag which enabled mod_rewrite to pass urls through to mod_proxy to another server.</p>
+<h2>Example</h2>
+<p>The following example will pipe all traffic from www.example1.com/example/ to www.example2.com</p>
+<pre><code>RewriteEngine On
+RewriteRule ^/?exmaple/(.*)$ http://www.example2.com/$1 [P]</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

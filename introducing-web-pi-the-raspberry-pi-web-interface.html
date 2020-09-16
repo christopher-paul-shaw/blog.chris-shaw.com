@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>Blog \ Introducing Web Pi The Raspberry Pi Web Interface</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Introducing Web Pi The Raspberry Pi Web Interface</h1>
+<p>Posted on <em>Friday 30th March 2018</em></p>
+<p><img src="https://webpi.chris-shaw.com/asset/WebUI.png" alt="Web Pi UI" /></p>
+<p>Web Pi <a href="https://webpi.chris-shaw.com/">https://webpi.chris-shaw.com/</a> is a simple web application for the raspberry pi which logs the output of cronjobs that run in the background to files which it interrogates to output to the user. This is done due to the limited resources of the raspberry pi and to reduce loading times.</p>
+<p>This application has been written in php framework <a href="https://www.php.gt">https://www.php.gt</a> </p>
+<h2>Why Was it Created</h2>
+<p>When working on my home network, users were reporting internet issues when I was not available to provide support, but a running theme was slow gaming. I suspected it was issues with the gaming networks such as PSN and over usage (streaming and gaming at the same time).</p>
+<p>When users persisted that it was the internet, I set up a raspberry pi to frequently perform speed tests and log the results. As expected net speed on the connection was less than 50 mbits per second, the raspberry Pi would not be a bottleneck. After running for a few days, each time there was an issue, I was able to check the logs and diagnose any issues, which usually correlated with PSN being slow.</p>
+<p>Although it did the job I needed, I wanted to open it up so other users could check the results without me giving them access to the server, hence I wrote the Web Pi to output the content to a browser, and gradually added more features.</p>
+<h2>What Features Does it Have?</h2>
+<p>It currently contains the following, but as more needs are come across, or if any are requested, I will be adding more.</p>
+<ul>
+<li>User Authentication System (File Based)</li>
+<li>SpeedTest With Logs</li>
+<li>RPI Stats</li>
+</ul>
+<h2>How to Install Using Git</h2>
+<ol>
+<li>
+<p>Clone Repository</p>
+<p>git clone git@github.com:christopher-paul-shaw/WebPi.git &amp;&amp; cd ./WebPi</p>
+</li>
+<li>
+<p>Composer Install</p>
+<p>composer install</p>
+</li>
+</ol>
+<p>The website is served from the /www directory and cronjobs are stored within the /cron path.
+You will need to enable cronjobs to run files in the cron directory at your desired times.</p>
+<h2>Demo</h2>
+<p>There is a demo linked on the projects homepage <a href="https://webpi.chris-shaw.com/">https://webpi.chris-shaw.com/</a></p>
+<p>URL: <a href="https://demo.webpi.chris-shaw.com/">https://demo.webpi.chris-shaw.com/</a></p>
+<p>Email: admin@web-pi</p>
+<p>Password: password</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title>Blog \ Transfering Files With Scp</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Transfering Files With Scp</h1>
+<p>Posted on <em>Wednesday 18th April 2018</em></p>
+<h1>About SCP</h1>
+<p>“Secure Copy Protocol. The SCP is a network protocol, based on the BSD RCP protocol, which supports file transfers between hosts on a network. SCP uses Secure Shell (SSH) for data transfer and uses the same mechanisms for authentication, thereby ensuring the authenticity and confidentiality of the data in transit.” Wikipedia</p>
+<h1>Syntax</h1>
+<pre><code>scp source destination</code></pre>
+<h1>Example Down</h1>
+<p>Transfer a file from the /var/www directory of the server to my home directory.</p>
+<pre><code>scp chris-shaw.com:/var/www/file.txt ~/file.txt</code></pre>
+<h1>Example Up</h1>
+<p>Transfer a file from my home directory to the /var/www directory of the server.</p>
+<pre><code>scp ~/file.txt chris-shaw.com:/var/www/file.txt</code></pre>
+<h1>Related</h1>
+<p>When transferring large files or lots of files, look into using compressions with tar.gz, see <a href="https://www.chris-shaw.com/blog/compressing-a-directory-on-linux">https://www.chris-shaw.com/blog/compressing-a-directory-on-linux</a> </p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

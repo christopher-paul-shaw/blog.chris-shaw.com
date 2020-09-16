@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Blog \ Using Non Default Php Version On Plesk Server Cli</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Using Non Default Php Version On Plesk Server Cli</h1>
+<p>Posted on <em>Thursday 30th January 2020</em></p>
+<p>Plesk is a tool for managing multiple websites with their own settings including PHP. But comes with alot of caveats, especially with configuration.</p>
+<p>Recently I needed to run a PHP a script as 7.2, but the OS Default is 5.6 so plesk kept forcing the script to run as 5.6. </p>
+<p>To run the script as the desired version, had to pass the PHP version as an Enviroment Variable to force any subshells to use the correct PHP version.</p>
+<pre><code>env “PATH=/opt/plesk/php/7.2/bin:$PATH” php script.php</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

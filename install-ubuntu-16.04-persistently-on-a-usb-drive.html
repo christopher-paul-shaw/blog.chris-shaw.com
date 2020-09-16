@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<title>Blog \ Install Ubuntu 16.04 Persistently On A Usb Drive</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Install Ubuntu 16.04 Persistently On A Usb Drive</h1>
+<p>Posted on <em>Tuesday 22nd August 2017</em></p>
+<p><img src="https://www.tecmint.com/wp-content/uploads/2016/10/Select-Ubuntu-16.10-Installation-Type.png" alt="Ubuntu" /></p>
+<hr />
+<h1>Warning</h1>
+<p>Please note that doing the following <strong>will reduce the lifespan of the USB device</strong> you are using.<br />
+As USB devces are relatively cheap, as long as you backup your important data, this can be an ideal solution.</p>
+<p>If you requre this for a more long term usage or less prone to failure, then I would advise to replace the USB drive with a Hard Drive.
+You can do this by using a 2.5 inch USB HDD Enclosure.</p>
+<hr />
+<p><strong>Please note this is different to using liveUSB mode or Persistant USB</strong></p>
+<p>The first time I did this, I looked at every forum and blog I could find but they all pointed at just a liveCD. Which at the time I wanted to use Ubuntu on my work laptop, without permission to install linux on the laptop, I needed a way to use linux, as if it was installed on the laptop. This is where I came to install linux directly on a usb.</p>
+<h1>What I wanted</h1>
+<p>I have used this method for several years with varying degrees of usage and found the following to be common benefits of this approach.</p>
+<ul>
+<li>
+<p><strong>Portable:</strong> All I need is a computer to access, rather than carrying around a laptop.</p>
+</li>
+<li>
+<p><strong>Disposable:</strong> If it gets damaged, just create a new one</p>
+</li>
+<li>
+<p><strong>Recovery:</strong> Useful for fixing problems or just retrieving files from corrupted hard disks.</p>
+</li>
+<li>
+<p><strong>Reusable:</strong> Can repurpose older systems without needing a hard drive.</p>
+</li>
+<li>
+<p><strong>Testing:</strong> Can use as a test enviroment before using software on main machine. </p>
+</li>
+</ul>
+<h1>Types of Install</h1>
+<p>Before we continue, we should point on the different ways of using USB Media for a linux distro.</p>
+<ul>
+<li>
+<p>Live USB: A Read Only version which boots into ram for testing and includes and installer to install to the computer's hard drive.</p>
+</li>
+<li>
+<p>Persistent Live USB: Similar to above but contains a partition to save minimal changes / files</p>
+</li>
+<li>
+<p>Linux On USB: A full version installed to the USB instead of the Hard Drive.</p>
+</li>
+</ul>
+<p>In this article we will be creating a <strong>Linux On USB</strong> using Ubuntu 16.04, the latest lts version from ubuntu.</p>
+<h1>Requirements</h1>
+<ul>
+<li>
+<p>1 x USB Drive, Minimum 8GB</p>
+</li>
+<li>
+<p>1 x Install Media (USB or Blank DVD)</p>
+</li>
+</ul>
+<h1>Steps to Take</h1>
+<ol>
+<li>
+<p>Create the Install Media</p>
+<ul>
+<li>Download the latest version of Ubuntu from <a href="https://www.ubuntu.com/download/desktop">Ubuntu.com</a> </li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Create LiveCD or LiveUSB
+: <a href="http://www.wikihow.com/Create-an-Ubuntu-Live-Cd">Windows Live CD</a></li>
+</ul>
+<ol>
+<li>
+<p>Disconnect the HDD
+This is optional but prevents any possibility of altering or corrupting the existing hard drive on the machine.</p>
+</li>
+<li>
+<p>Insert the target usb device.</p>
+</li>
+<li>
+<p>Insert and boot from the live installation media and run through the installation wizard, when asked the installation type, choose something else.</p>
+</li>
+<li>
+<p>Choose the Target USB Device and continue with the install.</p>
+</li>
+<li>
+<p>Reboot and boot from the target USB.</p>
+</li>
+<li>
+<p>Reconnect the Computers HDD if step 2 was taken.</p>
+</li>
+</ol>
+<p>By now you will have a working Ubuntu Installaton on your usb device. You can use it exactly how you would if you installed it to the hard drive.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

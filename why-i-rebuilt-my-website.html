@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title>Blog \ Why I Rebuilt My Website</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Why I Rebuilt My Website</h1>
+<p>Posted on <em>Monday 21st August 2017</em></p>
+<h1>Why Rebuild It?</h1>
+<p>The older website was becoming stale and had a few bugs which I did not really have the time to address, and was relying on a more complex software stack than it really needed, so when I did have time to look at this site, I decided a rewrite was in order.</p>
+<h3>What was the Goal with the Rewrite</h3>
+<ul>
+<li>To speed up the site</li>
+<li>Make it easier to Maintain</li>
+<li>Learn a framework rather than code everything myself</li>
+</ul>
+<p>The above goals were all met by simply using a decent framework.</p>
+<h3>A Framework</h3>
+<p>I decided that <strong>using a framework</strong> would be the most important point, more for the fact that I work with lots of different code on a daily basis, that having varying custom code in my own projects made it harder to maintain.</p>
+<p>In another article I will go through my search for my idea framework.</p>
+<p>Eventually I decided to use <a href="http://www.php.gt">phpGT</a> as it has a low learning curve and generally gets out of the way. Favoring the idea that php drops in when needed.</p>
+<h4>The Benefits</h4>
+<ul>
+<li>Increased page load due to framework only getting involved when needed</li>
+<li>Using the same framework for multiple projects makes maintenance easier</li>
+</ul>
+<h1>Anything New?</h1>
+<h2>New Blog</h2>
+<p>The last version of this website was the only one to not contain a blog, this was purely due to the previous sites blog being buggy. At the time not much was done on the site so it was removed. In this version though, I have opted for a different format.</p>
+<p>Rather than having a blog powered by a MySQL Database, the one on this version of the website uses the filesystem to load and manipulate <strong>markdown</strong> files. This has been combined with the routing of the framework to make a resilient yet simple blogging platform.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<title>Blog \ Using Dell Dock With Ubuntu</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Using Dell Dock With Ubuntu</h1>
+<p>Posted on <em>Monday 16th October 2017</em></p>
+<p><img src="http://i.dell.com/das/xa.ashx/global-site-design%20WEB/61026eee-7a6a-4724-3be9-032401cb328c/1/OriginalPng?id=Dell/Product_Images/Peripherals/Expansion/Dell/Docks_and_Stands/dell-docking-station-usb-3-hero-504x350.jpg" alt="Dell d3100 Dock" /></p>
+<p>I was issued one at work to allow me to hook 2 IPS monitors to my generic i5 laptop which only had one hdmi. Now for my co workers using windows, this was fairly simple. Where as I found it a little harder but mostly because of how hidden the drivers were.</p>
+<h1>Problems I Experienced</h1>
+<ul>
+<li>Screens coming and going as they pleased</li>
+<li>Wrong Resolutions</li>
+<li>Occasional Freeze</li>
+</ul>
+<h1>DisplayLink Support</h1>
+<blockquote>
+<p>Root cause for these problems have been identified as a result of the recent changes in X.org window system, which do not work with evdi correctly out of the box.</p>
+<p>Modesetting driver assumes page flips are not supported by devices using USB transport (e.g. udl - an opensource inbox driver for DisplayLink DL2 devices). However, evdi being a platform device, is not detected correctly by the logic in modesetting, and as a result page flipping is enabled for its screens."</p>
+<p>Unfortunately, other parts of X are not yet ready to do page flip on PRIME slave outputs - c.f. the code in present:
+These areas were changed just before releasing X from 1.18 and 1.19 branches - and the area is still being actively modified.</p>
+<p>Page flipping is again allowed on PRIME slave outputs on trunk (not yet released) version of X.</p>
+</blockquote>
+<p>Now I tried several different drivers suggested for Ubuntu, mainly from the display link wesbite, but it took a few days of hit and miss before I found out there was some hidden tweaks needed to rectify the issue. For my own reference, and for anyone experiencing this issue, here is how to remedy.</p>
+<p>The file we are modifying is <strong>20-displaylink.conf</strong> which will most likely need creating.</p>
+<ol>
+<li>
+<p>Download the <a href="http://www.displaylink.com/downloads/ubuntu">Ubuntu Driver</a> and install</p>
+</li>
+<li>
+<p>Create the config file as root    </p>
+<pre><code> sudo touch /usr/share/X11/xorg.conf.d/20-displaylink.conf</code></pre>
+</li>
+<li>
+<p>At the following section to the file</p>
+<pre><code> Section "Device" 
+   Identifier "Intel Graphics"
+   Driver "intel"
+ EndSection</code></pre>
+</li>
+<li>
+<p>Reboot</p>
+<pre><code> sudo reboot</code></pre>
+</li>
+<li>
+<p><strong>If Problems persist, add the following to the file then reboot</strong></p>
+<pre><code> Section "Device"
+   Identifier "DisplayLink"
+   Driver "modesetting"
+   Option "PageFlip" "false"
+ EndSection</code></pre>
+</li>
+</ol>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

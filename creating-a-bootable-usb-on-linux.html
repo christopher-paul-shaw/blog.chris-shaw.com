@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<title>Blog \ Creating A Bootable Usb On Linux</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Creating A Bootable Usb On Linux</h1>
+<p>Posted on <em>Saturday 19th May 2018</em></p>
+<p>In 2018 media such as CD’s and DVD’s have almost died out, with USB drives holding more capacity and being produced relatively cheaply. This means it makes more sense and is better value to use USB drives in place of CD’s or DVD’s.</p>
+<p>This article looks at how to create a bootable USB drives for various uses.</p>
+<p><img src="https://static.makeuseof.com/wp-content/uploads/2011/11/liveusb-icon.jpg" alt="Linux USB" /></p>
+<h1>What is a Bootable USB</h1>
+<p>A bootable USB is a USB attached media, which you can use as a boot device for a computer, this includes usb thumb drives and usb external hard drive enclosures.</p>
+<ul>
+<li>Having a bootable USB drive enables you to:</li>
+<li>Boot a Computer where there is no boot device or storage</li>
+<li>Recover a computer from an inoperable state</li>
+<li>Carry your computing environment with you</li>
+<li>Install Operating Systems such as Ubuntu and Windows 10</li>
+<li>Test operating systems before installing onto the computer</li>
+<li>There are also many other interesting and niche usages.</li>
+</ul>
+<h1>How to do this?</h1>
+<h2>1. GUI Tools</h2>
+<p>GUI Tools are programs which you run on your computer visually and are usually the easiest to use.</p>
+<p><img src="http://3.bp.blogspot.com/-6-gYreNkAQw/VTc7cCYo93I/AAAAAAAADD8/9oJ-7EmhlDI/s1600/Screenshot%2Bfrom%2B2015-04-22%2B00%3A52%3A00%2B1.png" alt="UNetBootin" /></p>
+<p>The simplest to use in my preference is UNetBootin (<a href="http://unetbootin.sourceforge.net/">http://unetbootin.sourceforge.net/</a>) which is available in most distributions. </p>
+<p><strong>All you need to do is:</strong></p>
+<ul>
+<li>
+<p>Select the circle next to Diskimage</p>
+</li>
+<li>
+<p>Browse for the file using the … button</p>
+</li>
+<li>
+<p>Select Your Drive and click ok</p>
+</li>
+</ul>
+<h2>2. Command Line</h2>
+<p>Using Command Line utilities is more complex but allows for more control of what you are doing and can get more information about what is happening.</p>
+<h3>- Insert the USB</h3>
+<h3>- Find your disks path, (Usually it will be /dev/sdb1 but depends on what drives you have installed)</h3>
+<pre><code>sudo fdisk -l</code></pre>
+<h3>- Unmount the disk found above</h3>
+<pre><code>sudo umount /dev/sdb1</code></pre>
+<h3>- Using DD copy the .iso to the dsk</h3>
+<pre><code>sudo dd if=/path/to/yourfile.iso of=/dev/sd1 bs=4M &amp;&amp; sync</code></pre>
+<h3>- Wait to complete then unplug</h3>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

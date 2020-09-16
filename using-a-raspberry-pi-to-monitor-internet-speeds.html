@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<title>Blog \ Using A Raspberry Pi To Monitor Internet Speeds</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Using A Raspberry Pi To Monitor Internet Speeds</h1>
+<p>Posted on <em>Wednesday 21st March 2018</em></p>
+<p>Recently I did some work on my home network, and noticed how nthe internet speed varied drastically throughout the day and where in the house we were accessing it. 
+After making some upgrades, I wanted to monitor if we now had a stable network when I was not in the house to monitor it myself.</p>
+<p>To handle this task, I wanted to achieve the following</p>
+<ul>
+<li>Record results from either fast.com or speedtest.net to a log file</li>
+<li>To repeate the above at frequent intervals (10 mins)</li>
+<li>To have the results accessible a phone.</li>
+</ul>
+<p>I had already decided I would use apache to serve the information, but for the actual heavy work of handling the speedtest I looked towards github and found a nice
+shell script to handle most of the grunt.</p>
+<p>Now following tutorial can be done on any linux operating system, but I decided to do this on a raspberry Pi for the following reasons. I will also be assuming you are using Raspbian
+but it will work on any debian based distro.</p>
+<ul>
+<li>Low Power Usage</li>
+<li>Silent (Imprtant to me as I had it set up in the home office)</li>
+</ul>
+<p>We will be using the speedtest script from <a href="https://git.io/speed">https://git.io/speed</a> , which was a godsend.</p>
+<p>Due to the amounts of writes tis script will do, I would advise booting the rasperry Pi off a USB Drive.
+For instructions check out <a href="https://www.chris-shaw.com/blog/booting-raspberry-pi-from-usb">https://www.chris-shaw.com/blog/booting-raspberry-pi-from-usb</a> </p>
+<h1>1) SSH Into your raspberry pi</h1>
+<pre><code>ssh user@raspberrypi</code></pre>
+<h1>2) Install Apache</h1>
+<p>Any webserver will do,such as nginx, but I am writing this tutorial with apache in mind.</p>
+<pre><code>sudo apt-get install apache2</code></pre>
+<h1>3) Directory Permissions</h1>
+<p>By default only root users can write to the default web directory. So we need to change the permissions so pi is the owner, but www-data can access the files.</p>
+<pre><code>sudo chown -R pi:www-data /var/www/</code></pre>
+<h1>4) Open the web director</h1>
+<pre><code>cd /var/www/html/</code></pre>
+<h1>5) Download and apply executable permissions to the speedtest script</h1>
+<pre><code>wget https://git.io/speedtest.sh &amp;&amp; chmod +x speedtest.sh</code></pre>
+<h1>6) Creating the Cronjob</h1>
+<p>A cronjob automates the running of a script within unix like operating systems. </p>
+<pre><code>sudo crontab -e</code></pre>
+<p>add following line at the end of the file</p>
+<pre><code>*/10 * * * * /var/www/html/speedtest.sh &gt;&gt; speedtest.log</code></pre>
+<p>Now if you go to the IP of your raspbberry Pi, you can view the log file with the speedtests.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

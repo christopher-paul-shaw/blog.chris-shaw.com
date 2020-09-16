@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>Blog \ Redirect All Requests Through One File</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Redirect All Requests Through One File</h1>
+<p>Posted on <em>Friday 13th April 2018</em></p>
+<p>This is a quick snippet using .htaccess to redirect requests within a directory to a given file in that directory.</p>
+<h2>Scenario</h2>
+<p>For a couple of projects  have been using the file structure as a routing method and needed all requests to be pointed to the index.php file, so</p>
+<ul>
+<li>/index.php</li>
+<li>/page.html</li>
+<li>/directory/page.html</li>
+</ul>
+<p>Would all run through the root directories index.php</p>
+<p>I opted to do this using a .htaccess file and use the mod_rewrite module for apache.</p>
+<h2>Requirements</h2>
+<ul>
+<li>mod_rewrite: <a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">http://httpd.apache.org/docs/current/mod/mod_rewrite.html</a></li>
+</ul>
+<h2>Install mod_rewrite on Debian, Ubuntu</h2>
+<pre><code>sudo a2enmod rewrite</code></pre>
+<h2>Code</h2>
+<p>Create a file called .htaccess in the root directory of the website with the following contents.</p>
+<pre><code>RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php [L,QSA]</code></pre>
+<h2>Explain</h2>
+<pre><code>RewriteEngine On // Turn on URL Rewriting
+RewriteCond %{REQUEST_FILENAME} !-f // Check If file does not exist
+RewriteCond %{REQUEST_FILENAME} !-d // Check If directory does not exist
+RewriteRule ^(.*)$ ./index.php [L,QSA] // Pass through to index.php  if above conditions passed</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

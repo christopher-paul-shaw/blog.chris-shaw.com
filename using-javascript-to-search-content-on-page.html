@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>Blog \ Using Javascript To Search Content On Page</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Using Javascript To Search Content On Page</h1>
+<p>Posted on <em>Thursday 5th March 2020</em></p>
+<pre><code>&lt;style&gt;
+    .hide {
+      display:none;
+    }
+&lt;/style&gt;
+
+
+&lt;input id="search" autocomplete="off"/&gt;
+&lt;div class="js-searchable"&gt;mysql&lt;/div&gt;
+&lt;div class="js-searchable"&gt;php&lt;/div&gt;
+&lt;div class="js-searchable"&gt;apache&lt;/div&gt;
+&lt;script&gt;
+    document.getElementById("search").addEventListener("keyup", function(){
+      let searchable = document.querySelectorAll(".js-searchable");
+        for (var i = 0; i &lt; searchable.length; i++) {
+            let current = searchable[i]; 
+            let title = current.innerHTML;  
+            if(title.includes(this.value)) {
+              current.classList.remove('hide');
+            }
+            else {
+              current.classList.add('hide');
+            }
+        }
+    });
+&lt;/script&gt;</code></pre>
+<p><a href="https://codepen.io/cshaw/pen/rNVmrwY">View Example</a></p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

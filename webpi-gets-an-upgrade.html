@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>Blog \ Webpi Gets An Upgrade</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Webpi Gets An Upgrade</h1>
+<p>Posted on <em>Monday 2nd April 2018</em></p>
+<h1>WebPi Blog</h1>
+<p>As part of an upgrade to the WebPi website, I decided to add a simple blog based of the one I frequently use on my personal website <a href="https://www.chris-shaw.com">https://www.chris-shaw.com</a>. To save the extra work and to keep better track of my blogging content, I have set the WebPi Blog to work in replication.</p>
+<h1>What is Replication</h1>
+<p>Rather than maintaining two blogs, I will maintain my personal blog with new categories. Articles within the weppi category will be automatically replicated here and kept current with my personal blog.</p>
+<h1>Whats will the blog be for</h1>
+<ul>
+<li>Annoucements Regarding WebPi</li>
+<li>Release Notes</li>
+<li>WebPi Tutorials</li>
+</ul>
+<p>In short, anything WebPi Related.</p>
+<h1>Lazy Developer?</h1>
+<p>The place I feel comfortable blogging is on my portfolio, its where I keep and show off what I can do. It is also somewhere I frequent daily. Now the WebPi Website was meant more as a splash page, So to keep it up to date and to keep using my portfolio, I have opted for a replication scenario.</p>
+<p>It also gives me more free time for working on the code rather than the content.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

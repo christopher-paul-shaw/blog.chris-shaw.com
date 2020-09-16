@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title>Blog \ Creating A New Table From Dataset In Mysql</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Creating A New Table From Dataset In Mysql</h1>
+<p>Posted on <em>Thursday 2nd January 2020</em></p>
+<p>I recently had to work on converting a copy of a large mysql database into a smaller development database. One of the early problems I had was one table had over 2 million rows, and I only needed a handful for testing.
+The easiest way i found to do this task was to create a new table with just the records I needed. Then swap them around.</p>
+<p>MySQL has the nice option of creating a table directly from a select, such as the following:</p>
+<pre><code>create table new_table
+select * from old_table;</code></pre>
+<p>An example of this in action would be a booking system, where you only wanted to keep bookings from  2019.</p>
+<pre><code>create table bookings_2019;
+select * from bookings WHERE date &gt;= '2019-01-01' and date &lt; '2020-01-01';</code></pre>
+<p>In my instance I only would want the new records, so can drop the old data</p>
+<pre><code>DROP TABLE bookings;
+ALTER TABLE `bookings_2019`
+RENAME TO `bookings`;</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

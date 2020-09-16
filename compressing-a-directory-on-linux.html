@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Blog \ Compressing A Directory On Linux</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Compressing A Directory On Linux</h1>
+<p>Posted on <em>Monday 22nd January 2018</em></p>
+<h1>Creating An Archive</h1>
+<p>A simple way is using the TAR command which using the following sytnax</p>
+<pre><code>tar -zcvf archive-name.tar.gz directory-name</code></pre>
+<p>tar: The Program we are using
+(Flags)
+-z: Compress archive using gzip program
+-c: Create archive
+-v: Verbose i.e display progress while creating archive
+-f: Destination File Name</p>
+<p>An Example of this would be the following</p>
+<pre><code>$ tar -zcvf my-archive.tar.gz /home/cshaw/project</code></pre>
+<h1>Excluding a Directory</h1>
+<p>When creating the archive you may want to exclude certain directories, for instance .git</p>
+<pre><code>$ tar -zcvf my-archive.tar.gz --exclude=".git" /home/cshaw/project</code></pre>
+<h1>Extracting An Archive</h1>
+<p>The syntax is similar to extract the active. The main difference is we change the flag -c (create) to -x (extract)</p>
+<pre><code>$ tar -zxvf my-archive.tar.gz /home/chris/project</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title>Blog \ Install Ubuntu Bionic Beaver On A Usb</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Install Ubuntu Bionic Beaver On A Usb</h1>
+<p>Posted on <em>Sunday 3rd June 2018</em></p>
+<p>Ubuntu is one of the most popular and user friendly distributions of Linux, sporting a tweaked version of Gnome Shell as the default desktop environment.</p>
+<p>Bionic Beaver is the latest LTS version of Ubuntu, LTS versions come every two years and are supported for five years after release.</p>
+<p>Bionic Beaver will continue to receive security updates and critical bug fixes until April of 2023 making it an ideal candidate to rely on.</p>
+<h1>Installing to a USB?</h1>
+<p>Before we continue, we should point on the different ways of using USB Media for a linux distro.</p>
+<ul>
+<li>
+<p>Live USB: A Read Only version which boots into ram for testing and includes and installer to install to the computer's hard drive.</p>
+</li>
+<li>
+<p>Persistent Live USB: Similar to above but contains a partition to save minimal changes / files</p>
+</li>
+<li>
+<p>Linux On USB (Full Install USB): A full version installed to the USB instead of the Hard Drive.</p>
+</li>
+</ul>
+<p>In this article we will be creating a Full Install USB so we can use the USB as if we were booting it of a normal hdd. This allows us to save changes and use the OS in its normal fashion </p>
+<h1>Why would I want to do this?</h1>
+<p>I have used this method for several years with varying degrees of usage and found the following to be common benefits of this approach.</p>
+<ul>
+<li>
+<p>Portable: All I need is a computer to access, rather than carrying around a laptop.</p>
+</li>
+<li>
+<p>Disposable: If it gets damaged, just create a new one</p>
+</li>
+<li>
+<p>Recovery: Useful for fixing problems or just retrieving files from corrupted hard disks.</p>
+</li>
+<li>
+<p>Reusable: Can repurpose older systems without needing a hard drive.</p>
+</li>
+<li>
+<p>Testing: Can use as a test environment before using software on main machine.</p>
+</li>
+</ul>
+<h1>Warning</h1>
+<p>Using a USB long term will eventually wear down and break the USB device, it is advisable to frequently make backups or use a USB External HDD Enclosure.  </p>
+<h1>Installing to the USB</h1>
+<p><strong> 1) Create Installation media</strong></p>
+<p>Firstly we need to download the latest version of Ubuntu 18.04 at <a href="http://releases.ubuntu.com/18.04/">http://releases.ubuntu.com/18.04/</a></p>
+<p>Once downloaded, we need to write it to a USB for us to boot from, dependent on your host OS you can follow one of the linked guides below.  </p>
+<ul>
+<li><a href="https://www.chris-shaw.com/blog/creating-a-bootable-usb-on-linux">https://www.chris-shaw.com/blog/creating-a-bootable-usb-on-linux</a>  </li>
+<li><a href="https://www.chris-shaw.com/blog/creating-a-bootable-usb-on-windows">https://www.chris-shaw.com/blog/creating-a-bootable-usb-on-windows</a>  </li>
+</ul>
+<p><strong> 2) Disconnect the HDD</strong></p>
+<p>This is optional but prevents any possibility of altering or corrupting the existing hard drive on the machine.</p>
+<p><strong> 3) Insert the Installation Media and the Target USB device and boot the install media. </strong> </p>
+<p>When starting your computer you may need to access the boot menu, this different depending on the motherboard, but is usually one of the following keys (F2, F8, F10, F12)  </p>
+<p><strong> 4) Run through the installation wizard </strong></p>
+<p>When you are asked the installation type, choose “something else” and select the Target USB Device and continue with the installation. Once installed remove the installation media and reboot.</p>
+<p><strong> 6) Choose the Target USB Device and continue with the install. </strong>  </p>
+<p><strong> 7) Reboot and boot from the target USB. </strong></p>
+<p><strong> 8) Reconnect the Computers HDD if step 2 was taken. </strong></p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

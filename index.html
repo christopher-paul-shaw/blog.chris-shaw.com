@@ -1,0 +1,610 @@
+<html>
+	<head>
+		<title>Blog \ Index</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+				<div class="u-theme-white u-margin-bottom--tiny">
+		<input id="search" class="u-width--12-12 u-padding--small" autocomplete="off" placeholder="Search Term"/>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./truncate-large-tables-in-mysql.html" class="u-font u-font-size--delta title">Truncate Large Tables In Mysql</a>
+		<div class="u-margin-bottom--small">Large tables in mysql can be very slow to truncate, but this process can be easily made quicker.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./truncate-large-tables-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./see-table-sizes-in-mysql.html" class="u-font u-font-size--delta title">See Table Sizes In Mysql</a>
+		<div class="u-margin-bottom--small">How to see the size of all tables in the database.
+</div>
+		<div class="u-align__text--right">
+			<a href="./see-table-sizes-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./get-mysql-database-size.html" class="u-font u-font-size--delta title">Get Mysql Database Size</a>
+		<div class="u-margin-bottom--small">SQL queries you can run to get the Size of MySQl Databases
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./get-mysql-database-size.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./remove-lines-containing-string-from-file.html" class="u-font u-font-size--delta title">Remove Lines Containing String From File</a>
+		<div class="u-margin-bottom--small">How to remove lines from a file which match a search parameter
+</div>
+		<div class="u-align__text--right">
+			<a href="./remove-lines-containing-string-from-file.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./apache-virtualhost-to-point-all-subdomains-to-https.html" class="u-font u-font-size--delta title">Apache Virtualhost To Point All Subdomains To Https</a>
+		<div class="u-margin-bottom--small">VirtualHost template for directing all traffic on HTTP (Port 80) to HTTPS (443)
+</div>
+		<div class="u-align__text--right">
+			<a href="./apache-virtualhost-to-point-all-subdomains-to-https.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./generating-a-wildcard-cert-for-debian-8-and-apache.html" class="u-font u-font-size--delta title">Generating A Wildcard Cert For Debian 8 And Apache</a>
+		<div class="u-margin-bottom--small">How to quickly generate a wildcard SSL Cert on a Debian System
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./generating-a-wildcard-cert-for-debian-8-and-apache.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./bash-cli-download-speed-test.html" class="u-font u-font-size--delta title">Bash Cli Download Speed Test</a>
+		<div class="u-margin-bottom--small">A bash script to allow monitoring of downloads speeds.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./bash-cli-download-speed-test.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./using-javascript-to-search-content-on-page.html" class="u-font u-font-size--delta title">Using Javascript To Search Content On Page</a>
+		<div class="u-margin-bottom--small">A peice of javascript to allow easy searching of content on the current page
+</div>
+		<div class="u-align__text--right">
+			<a href="./using-javascript-to-search-content-on-page.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./blocking-access-to-port-for-all-ips-except-one.html" class="u-font u-font-size--delta title">Blocking Access To Port For All Ips Except One</a>
+		<div class="u-margin-bottom--small">How to only allow one IP to access a port on a linux server using iptables
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./blocking-access-to-port-for-all-ips-except-one.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./add-swap-file-on-linux.html" class="u-font u-font-size--delta title">Add Swap File On Linux</a>
+		<div class="u-margin-bottom--small">How to add a swapfile to linux based system or vps.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./add-swap-file-on-linux.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./find-and-delete-directories-over-certain-age.html" class="u-font u-font-size--delta title">Find And Delete Directories Over Certain Age</a>
+		<div class="u-margin-bottom--small">Using the find command to find directories and delete them over a certain age.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./find-and-delete-directories-over-certain-age.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./checking-mysql-database-exists-from-cli.html" class="u-font u-font-size--delta title">Checking Mysql Database Exists From Cli</a>
+		<div class="u-margin-bottom--small">How to check if a datbase exists from the command line.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./checking-mysql-database-exists-from-cli.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./using-non-default-php-version-on-plesk-server-cli.html" class="u-font u-font-size--delta title">Using Non Default Php Version On Plesk Server Cli</a>
+		<div class="u-margin-bottom--small">How to actually run scripts in a plesk server with the correct PHP Version.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./using-non-default-php-version-on-plesk-server-cli.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./single-line-sftp-copy.html" class="u-font u-font-size--delta title">Single Line Sftp Copy</a>
+		<div class="u-margin-bottom--small">How to copy a file over sftp in one line
+</div>
+		<div class="u-align__text--right">
+			<a href="./single-line-sftp-copy.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./delete-all-local-branches-except-current.html" class="u-font u-font-size--delta title">Delete All Local Branches Except Current</a>
+		<div class="u-margin-bottom--small">How to delete all local branches in a git repository except current
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./delete-all-local-branches-except-current.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./see-the-size-of-tables-in-mysql.html" class="u-font u-font-size--delta title">See The Size Of Tables In Mysql</a>
+		<div class="u-margin-bottom--small">How to view the size of each table within a database.
+</div>
+		<div class="u-align__text--right">
+			<a href="./see-the-size-of-tables-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./creating-a-new-table-from-dataset-in-mysql.html" class="u-font u-font-size--delta title">Creating A New Table From Dataset In Mysql</a>
+		<div class="u-margin-bottom--small">How to put the results of a select query into a seperate table.
+</div>
+		<div class="u-align__text--right">
+			<a href="./creating-a-new-table-from-dataset-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./finding-program-hogging-port.html" class="u-font u-font-size--delta title">Finding Program Hogging Port</a>
+		<div class="u-margin-bottom--small">How to locate and kill a process which is hogging a port on the server.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./finding-program-hogging-port.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./proxy-traffic-to-another-domain-using-htaccess.html" class="u-font u-font-size--delta title">Proxy Traffic To Another Domain Using Htaccess</a>
+		<div class="u-margin-bottom--small">How to pipe all traffing from one domain to another one whilst not changing the visible domain
+</div>
+		<div class="u-align__text--right">
+			<a href="./proxy-traffic-to-another-domain-using-htaccess.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./unblock-an-ip-blocked-by-fail2ban.html" class="u-font u-font-size--delta title">Unblock An Ip Blocked By Fail2ban</a>
+		<div class="u-margin-bottom--small">Instructions on unbanning an IP which has been blocked by Fail2Ban.
+</div>
+		<div class="u-align__text--right">
+			<a href="./unblock-an-ip-blocked-by-fail2ban.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./bulk-reneame-file-extentions-in-bash.html" class="u-font u-font-size--delta title">Bulk Reneame File Extentions In Bash</a>
+		<div class="u-margin-bottom--small">Using Bash to bulk rename file extentions
+</div>
+		<div class="u-align__text--right">
+			<a href="./bulk-reneame-file-extentions-in-bash.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./password-zip-file-in-php.html" class="u-font u-font-size--delta title">Password Zip File In Php</a>
+		<div class="u-margin-bottom--small">How to add a file to a zipped archive protected with a password
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./password-zip-file-in-php.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./transferring-data-between-tables-in-mysql.html" class="u-font u-font-size--delta title">Transferring Data Between Tables In Mysql</a>
+		<div class="u-margin-bottom--small">Transferring data between tables using an SQL query rather.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./transferring-data-between-tables-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./converting-the-pound-symbol.html" class="u-font u-font-size--delta title">Converting The Pound Symbol</a>
+		<div class="u-margin-bottom--small">Snippet for using the GBP symbol in areas where its not supported
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./converting-the-pound-symbol.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./enable-passwordless-sudo-for-user.html" class="u-font u-font-size--delta title">Enable Passwordless Sudo For User</a>
+		<div class="u-margin-bottom--small">How to enable a specific user to use the sudo command without entering their password
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./enable-passwordless-sudo-for-user.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./transfer-ssh-keys-from-github-to-server.html" class="u-font u-font-size--delta title">Transfer Ssh Keys From Github To Server</a>
+		<div class="u-margin-bottom--small">One line command to download public keys from GitHub and Append them to the authorized_keys file for simple server access
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./transfer-ssh-keys-from-github-to-server.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./fix-for-apache2-crashing-with-could-not-grab-the-accept-mutex.html" class="u-font u-font-size--delta title">Fix For Apache2 Crashing With Could Not Grab The Accept Mutex</a>
+		<div class="u-margin-bottom--small">Fix for when the Apache2 service repeatedly crashes due to not being able to find the Mutex.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./fix-for-apache2-crashing-with-could-not-grab-the-accept-mutex.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./get-size-of-tables-in-mysql.html" class="u-font u-font-size--delta title">Get Size Of Tables In Mysql</a>
+		<div class="u-margin-bottom--small">Listing out the size of all the tables in a mysql database.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./get-size-of-tables-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./extracting-gzipped-sql-file-in-linux.html" class="u-font u-font-size--delta title">Extracting Gzipped Sql File In Linux</a>
+		<div class="u-margin-bottom--small">A simple command to extract the sql file from an sql.gz extention
+</div>
+		<div class="u-align__text--right">
+			<a href="./extracting-gzipped-sql-file-in-linux.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./force-website-to-http-or-https.html" class="u-font u-font-size--delta title">Force Website To Http Or Https</a>
+		<div class="u-margin-bottom--small">Redirecting a website from http to https or https to http.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./force-website-to-http-or-https.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./get-the-date-of-a-commit-in-git.html" class="u-font u-font-size--delta title">Get The Date Of A Commit In Git</a>
+		<div class="u-margin-bottom--small">How to Get the Date and Time of when a commit was made in git.
+</div>
+		<div class="u-align__text--right">
+			<a href="./get-the-date-of-a-commit-in-git.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./mysql-workbench-disable-safemode.html" class="u-font u-font-size--delta title">Mysql Workbench Disable Safemode</a>
+		<div class="u-margin-bottom--small">How to disable Safe Mode in MySQL Workbench
+</div>
+		<div class="u-align__text--right">
+			<a href="./mysql-workbench-disable-safemode.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./introducing-the-input-class.html" class="u-font u-font-size--delta title">Introducing The Input Class</a>
+		<div class="u-margin-bottom--small">
+Release Announcement for the Input Class
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./introducing-the-input-class.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./how-to-administer-user-accounts-in-mysql.html" class="u-font u-font-size--delta title">How To Administer User Accounts In Mysql</a>
+		<div class="u-margin-bottom--small">Several commands for adding and modifying users in a mysql database.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./how-to-administer-user-accounts-in-mysql.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./changing-the-format-of-a-date-in-php-using-datetime.html" class="u-font u-font-size--delta title">Changing The Format Of A Date In Php Using Datetime</a>
+		<div class="u-margin-bottom--small">Code snippet to convert a date using the DateTime class in PHP.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./changing-the-format-of-a-date-in-php-using-datetime.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./find-tables-by-column-name-in-mysql-database.html" class="u-font u-font-size--delta title">Find Tables By Column Name In Mysql Database</a>
+		<div class="u-margin-bottom--small">Code snippet to find what tables contain a specific column within a mysql database.
+</div>
+		<div class="u-align__text--right">
+			<a href="./find-tables-by-column-name-in-mysql-database.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./using-a-custom-domain-with-google-mail-for-free.html" class="u-font u-font-size--delta title">Using A Custom Domain With Google Mail For Free</a>
+		<div class="u-margin-bottom--small">In this article we are looking at how we can use a custom domain for our email addresses whilst using the popular webmail GMail without having to pay for the benefit.
+</div>
+		<div class="u-align__text--right">
+			<a href="./using-a-custom-domain-with-google-mail-for-free.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./amazon-turns-echo-dots-into-paperweight.html" class="u-font u-font-size--delta title">Amazon Turns Echo Dots Into Paperweight</a>
+		<div class="u-margin-bottom--small">Amazon has Broken Alexa, or at least the App.
+With recent updates, Alexa has managed to cripple the Alexa Experience for many of its loyal customers.
+</div>
+		<div class="u-align__text--right">
+			<a href="./amazon-turns-echo-dots-into-paperweight.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./introducing-the-article-class.html" class="u-font u-font-size--delta title">Introducing The Article Class</a>
+		<div class="u-margin-bottom--small">Article, is a class which interacts with files in the disk and returning them in a simple to use format.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./introducing-the-article-class.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./how-to-get-postman-on-screen.html" class="u-font u-font-size--delta title">How To Get Postman On Screen</a>
+		<div class="u-margin-bottom--small">How to get the Postman application (and others with similar issue) back on the screen in windows 10.
+</div>
+		<div class="u-align__text--right">
+			<a href="./how-to-get-postman-on-screen.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./search-added.html" class="u-font u-font-size--delta title">Search Added</a>
+		<div class="u-margin-bottom--small">Releasing a small update to the portfolio in the form of a search.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./search-added.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./php-class-datastore.html" class="u-font u-font-size--delta title">Php Class Datastore</a>
+		<div class="u-margin-bottom--small">DataStore is a class which uses the directory and file structure of a filesystem to store and manipulate information. It does so using unique indentifiers for folder names and .dat files to hold the content of fields.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./php-class-datastore.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./install-ubuntu-bionic-beaver-on-a-usb.html" class="u-font u-font-size--delta title">Install Ubuntu Bionic Beaver On A Usb</a>
+		<div class="u-margin-bottom--small">How to install Ubuntu 18.04 (Bionic Beaver) to a USB.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./install-ubuntu-bionic-beaver-on-a-usb.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./webpi-rpi-web-ui-update.html" class="u-font u-font-size--delta title">Webpi Rpi Web Ui Update</a>
+		<div class="u-margin-bottom--small">As the WebPi UI is going to be a lighweight base for future projects, a small but important change has been made to the core code.
+</div>
+		<div class="u-align__text--right">
+			<a href="./webpi-rpi-web-ui-update.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./importing-and-exporting-mysql-database-with-progress-bar.html" class="u-font u-font-size--delta title">Importing And Exporting Mysql Database With Progress Bar</a>
+		<div class="u-margin-bottom--small">How to import and export large MYSQL Databses with Progress Bar.
+</div>
+		<div class="u-align__text--right">
+			<a href="./importing-and-exporting-mysql-database-with-progress-bar.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./creating-a-bootable-usb-on-linux.html" class="u-font u-font-size--delta title">Creating A Bootable Usb On Linux</a>
+		<div class="u-margin-bottom--small">How to create a bootable USB drive from an iso file on linux.
+</div>
+		<div class="u-align__text--right">
+			<a href="./creating-a-bootable-usb-on-linux.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./webpi-modular-directory.html" class="u-font u-font-size--delta title">Webpi Modular Directory</a>
+		<div class="u-margin-bottom--small">A minor changes has been added to the WebPi UI to allow future expandability. </div>
+		<div class="u-align__text--right">
+			<a href="./webpi-modular-directory.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./creating-a-bootable-usb-on-windows.html" class="u-font u-font-size--delta title">Creating A Bootable Usb On Windows</a>
+		<div class="u-margin-bottom--small">How to create a bootable USB drive from an iso file on windows.
+</div>
+		<div class="u-align__text--right">
+			<a href="./creating-a-bootable-usb-on-windows.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./transfering-files-with-scp.html" class="u-font u-font-size--delta title">Transfering Files With Scp</a>
+		<div class="u-margin-bottom--small">Using SCP you can transfer files easily between one computer and another where ssh is available. This article is reference notes on how to use scp.
+</div>
+		<div class="u-align__text--right">
+			<a href="./transfering-files-with-scp.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./redirect-all-requests-through-one-file.html" class="u-font u-font-size--delta title">Redirect All Requests Through One File</a>
+		<div class="u-margin-bottom--small">How to redirect all not existing content requests to a specific file in a directory.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./redirect-all-requests-through-one-file.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./webpi-gets-an-upgrade.html" class="u-font u-font-size--delta title">Webpi Gets An Upgrade</a>
+		<div class="u-margin-bottom--small">A small upgrade to https://webpi.chris-shaw.com with the addition of a blog.
+</div>
+		<div class="u-align__text--right">
+			<a href="./webpi-gets-an-upgrade.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./introducing-web-pi-the-raspberry-pi-web-interface.html" class="u-font u-font-size--delta title">Introducing Web Pi The Raspberry Pi Web Interface</a>
+		<div class="u-margin-bottom--small">Introducing Web Pi, the Web User Interface for interacting with your raspberry Pi.
+</div>
+		<div class="u-align__text--right">
+			<a href="./introducing-web-pi-the-raspberry-pi-web-interface.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./throw-away-local-commits-using-git.html" class="u-font u-font-size--delta title">Throw Away Local Commits Using Git</a>
+		<div class="u-margin-bottom--small">Sometimes you make commits locally in error and sometimes they can be a pain to get rid of, here are a few ways to do so.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./throw-away-local-commits-using-git.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./using-a-raspberry-pi-to-monitor-internet-speeds.html" class="u-font u-font-size--delta title">Using A Raspberry Pi To Monitor Internet Speeds</a>
+		<div class="u-margin-bottom--small">When diagnosing internet and network connectivity, having a way to monitor issues over time is important. Here we will look at how to periodically log up and down speeds of the
+network.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./using-a-raspberry-pi-to-monitor-internet-speeds.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./booting-raspberry-pi-from-usb.html" class="u-font u-font-size--delta title">Booting Raspberry Pi From Usb</a>
+		<div class="u-margin-bottom--small">Boot Raspberry Pi from USB
+
+The standard way of using a Raspberry Pi is to run the OS from a micro sd card. The problem with this is that the SD Card has limited read and writes, which will cause the SD to fail in a short period of time, especially if you write to files frequently.
+</div>
+		<div class="u-align__text--right">
+			<a href="./booting-raspberry-pi-from-usb.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./using-squash-to-tidy-commits.html" class="u-font u-font-size--delta title">Using Squash To Tidy Commits</a>
+		<div class="u-margin-bottom--small">How to tidy up a branch with multiple nonsence commits into one commit
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./using-squash-to-tidy-commits.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./installing-php-7.2-on-debian-8-jessie-and-debian-9-stretch.html" class="u-font u-font-size--delta title">Installing Php 7.2 On Debian 8 Jessie And Debian 9 Stretch</a>
+		<div class="u-margin-bottom--small">Previously I wrote an article on how to install PHP 7.2 on Debian 8, since 7.2 is now available here is how to install 7.2
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./installing-php-7.2-on-debian-8-jessie-and-debian-9-stretch.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./using-wildcards-in-virtual-hosts-on-apache.html" class="u-font u-font-size--delta title">Using Wildcards In Virtual Hosts On Apache</a>
+		<div class="u-margin-bottom--small">Virtual hosts in apache take incoming requests and point them to the correct directory. Here we will look into using wildcards to automate sub domains.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./using-wildcards-in-virtual-hosts-on-apache.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./compressing-a-directory-on-linux.html" class="u-font u-font-size--delta title">Compressing A Directory On Linux</a>
+		<div class="u-margin-bottom--small">When backing up or transferring directories between computers its best to do so by compressing them in an archive to reduce space / bandwidth.
+</div>
+		<div class="u-align__text--right">
+			<a href="./compressing-a-directory-on-linux.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./ssh-tunnel-to-database.html" class="u-font u-font-size--delta title">Ssh Tunnel To Database</a>
+		<div class="u-margin-bottom--small">Procedure snippet for connecting to a database through an SSH Tunnel. Used for local development requiring live data.
+</div>
+		<div class="u-align__text--right">
+			<a href="./ssh-tunnel-to-database.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./easy-install-ssl-certificate-on-linux-for-https.html" class="u-font u-font-size--delta title">Easy Install Ssl Certificate On Linux For Https</a>
+		<div class="u-margin-bottom--small">Recently changed to having self hosted SSL Certificates thanks to LetsEncrypt. This is how easy it can be.
+</div>
+		<div class="u-align__text--right">
+			<a href="./easy-install-ssl-certificate-on-linux-for-https.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./accessing-files-between-windows-and-wsl.html" class="u-font u-font-size--delta title">Accessing Files Between Windows And Wsl</a>
+		<div class="u-margin-bottom--small">When using Windows Subsystem for Linux, you might need to access one operating systems files within another. Lets work out both ways.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./accessing-files-between-windows-and-wsl.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./my-adventure-migrating-back-to-windows.html" class="u-font u-font-size--delta title">My Adventure Migrating Back To Windows</a>
+		<div class="u-margin-bottom--small">I have had linux as my primary OS for about a decade now, and primarily use Ubuntu. But with the latest release I have decided to migrate back to an OS I generally dislike, Windows 10.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./my-adventure-migrating-back-to-windows.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./quick-fix-for-git-corrupt-index.html" class="u-font u-font-size--delta title">Quick Fix For Git Corrupt Index</a>
+		<div class="u-margin-bottom--small">Quick fix for the bad signature , index file corrupt error in Git.
+</div>
+		<div class="u-align__text--right">
+			<a href="./quick-fix-for-git-corrupt-index.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./disable-error-reporting-in-ubuntu.html" class="u-font u-font-size--delta title">Disable Error Reporting In Ubuntu</a>
+		<div class="u-margin-bottom--small">Ubuntu comes with a program called Apport, which is designed to inform the user where the system has detected a problem, or if a program has crashed. Although it is a well intended program, it gets in the way and is rather annoying, especially when it does not give you much information about the problem, or the problem which triggered it is of no real concern.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./disable-error-reporting-in-ubuntu.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./using-dell-dock-with-ubuntu.html" class="u-font u-font-size--delta title">Using Dell Dock With Ubuntu</a>
+		<div class="u-margin-bottom--small">Over the years I have found my way around many minor hurdles when using Ubuntu, the most recent being Using the **DELL ULTRAHD 4K USB 3.0 DOCKING STATION (D3100)**.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./using-dell-dock-with-ubuntu.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./how-to-install-php-7.1-on-debian-8.html" class="u-font u-font-size--delta title">How To Install Php 7.1 On Debian 8</a>
+		<div class="u-margin-bottom--small">I recently wrote a similar article for Ubuntu, but here is how to install on Debian 8.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./how-to-install-php-7.1-on-debian-8.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./how-to-install-and-setup-vagrant.html" class="u-font u-font-size--delta title">How To Install And Setup Vagrant</a>
+		<div class="u-margin-bottom--small">Vagrant is a powerful tool when it comes to virtual machines, here we will look at how to setup and use Vagrant with Virtualbox on Ubuntu to provision reproducible virtual machines.
+ 
+</div>
+		<div class="u-align__text--right">
+			<a href="./how-to-install-and-setup-vagrant.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./installing-php-7.1-on-ubuntu.html" class="u-font u-font-size--delta title">Installing Php 7.1 On Ubuntu</a>
+		<div class="u-margin-bottom--small">Ubuntu always lags behind with the software available in its repo's for security reasons, but if you need the latest version of PHP you need to look at other reputable repositories.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./installing-php-7.1-on-ubuntu.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./passwordless-login-using-ssh-keys.html" class="u-font u-font-size--delta title">Passwordless Login Using Ssh Keys</a>
+		<div class="u-margin-bottom--small">Here we look at how to generate SSH Keys and Copy them to servers to enable secure but pass-wordless login.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./passwordless-login-using-ssh-keys.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./install-ubuntu-16.04-persistently-on-a-usb-drive.html" class="u-font u-font-size--delta title">Install Ubuntu 16.04 Persistently On A Usb Drive</a>
+		<div class="u-margin-bottom--small">In this article we are going to cover how to install a linux distro to a USB Drive that allows you to use the usb drive as you would normally use the devices hard disk.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./install-ubuntu-16.04-persistently-on-a-usb-drive.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>	<div class="article u-padding--small  c-box--border  u-margin-bottom--tiny">
+		<a href="./why-i-rebuilt-my-website.html" class="u-font u-font-size--delta title">Why I Rebuilt My Website</a>
+		<div class="u-margin-bottom--small">Why i rebuilt my website.
+
+As part of its life-cycle, this website has undergone a rebuild on top of a new framework and the addition of some new features.
+
+</div>
+		<div class="u-align__text--right">
+			<a href="./why-i-rebuilt-my-website.html" class="u-font c-box c-box--round u-theme-blue u-padding--tiny">Read Full Article</a>
+		</div>
+	</div>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

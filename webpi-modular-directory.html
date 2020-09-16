@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Blog \ Webpi Modular Directory</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Webpi Modular Directory</h1>
+<p>Posted on <em>Tuesday 24th April 2018</em></p>
+<p>As part of some smaller changes on the WebPi, I am looking at making it easier to drop some files into the codebase and for the rest of the system to atleast acknowledge them.</p>
+<p>The changes in this update, currently in the master branch are as follow:</p>
+<ul>
+<li>A new Directory Called Tools has been added, this is where the html and php front end files will be located.</li>
+<li>A new Tools Menu has been added to the header that is automatically populated</li>
+<li>A new Tools class which acknowledges the new files and will be expanded to interact more with them</li>
+<li>Todays Speed Logs has been moved to example.com/tools/speed</li>
+</ul>
+<p>As always, check out the website <a href="https://webpi.chris-shaw.com">https://webpi.chris-shaw.com</a> and the git repository <a href="https://github.com/christopher-paul-shaw/WebPi">https://github.com/christopher-paul-shaw/WebPi</a></p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

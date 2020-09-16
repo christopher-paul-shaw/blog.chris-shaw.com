@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<title>Blog \ Using A Custom Domain With Google Mail For Free</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Using A Custom Domain With Google Mail For Free</h1>
+<p>Posted on <em>Friday 18th January 2019</em></p>
+<p><strong>GMAIL</strong> (<a href="https://mail.google.com">https://mail.google.com</a>) is probably the most friendly and easy to use Web Mail client currently out there. 
+With years of research and development behind every aspect, it would be hard to find something comparable.</p>
+<p>The main problem with Free Gmail Accounts though, is the lack of professional looking email addresses that are currently available. 
+The majority of respectable ones are already taken, and having a free email host in your email address does not look as good as domain branded one.</p>
+<p>For instance do you prefer someguy17263@gmail.com or hello@mywebsite.com</p>
+<p><img src="https://www.chris-shaw.com/asset/images/articles/gmail-custom-domain-fig1.PNG" alt="Figure 1" /></p>
+<p><strong>Try getting yourname@gmail.com without some random numbers or words in there.</strong></p>
+<p>You can instead use your own domain with Gmail, which allows you to make use of yourname@yourdomain.com.
+There are two methods to do this:
+<strong>1. GSuite</strong>
+This is googles commercial office suite and one of the features is support for a custom domain. The caveat with this is that it is not free, and if you only
+want to use your domain for email, then you probably don’t want to pay a monthly fee.</p>
+<p><strong>2. Email Forwarding and Send As</strong>
+Another option is to use either your domain registrar or another service to forward all email to your Gmail account, and enabling google to send from the domain.
+This is the option we will be looking at today.</p>
+<h1>Requirements</h1>
+<p><strong>1. Domain Name</strong> 
+For the purpose of this guide, I have registered a free domain sha1.tk using Freenom (<a href="https://www.freenom.com/">https://www.freenom.com/</a>).
+I have used Freenom as they provide free domains for up to 12 months at a time,</p>
+<p><strong>2. Google Account</strong>
+You can use an existing account, or registered for a new one.</p>
+<h1>Lets Get Started</h1>
+<h2>1. Forwarding Email</h2>
+<p>This step is different depending on which domain registrar you use, there are guides for most popular registrars such as godaddy but here we will assume you don’t have a registrar which supports Forwarding Email.</p>
+<p>Instead we will use ImprovMX to forward the email for us.</p>
+<p><img src="https://www.chris-shaw.com/asset/images/articles/gmail-custom-domain-fig2.PNG" alt="Figure 1" /></p>
+<ul>
+<li>Register the Domain you want to Use</li>
+<li>ImprovMX then provides you with instructions of what changes you need to make to your domain MX records</li>
+<li>Add a catchall email forwarder *@yourdomain.com to point to your Gmail account</li>
+<li>Click Test and you will receive an email to confirm forwarding</li>
+</ul>
+<p><img src="https://www.chris-shaw.com/asset/images/articles/gmail-custom-domain-fig3.PNG" alt="Figure 1" /></p>
+<p>By this point you can happily use your new domain, and anything before the @ will be sent to the desired Gmail account.</p>
+<p>So I can now receive all email sent to @sha1.tk, including hello@sha1.tk, test@sha1.tk</p>
+<h2>2. Send As Domain</h2>
+<p>Now you have your professional email address to hand out, but when you go to reply to an email you still currently have to send as your Gmail account.
+Thanks to Google Aliasing we can send from our Gmail account as another email address.</p>
+<ul>
+<li>Firstly, you need to enable "Less Secure Apps" (<a href="https://www.google.com/settings/security/lesssecureapps">https://www.google.com/settings/security/lesssecureapps</a>) </li>
+<li>In Gmail, click the gear icon and go to settings </li>
+<li>Then go to Accounts and Import, choose Add another email address</li>
+<li>Enter Your Name and the Email address you want to use and click Next Step</li>
+<li>Input the following settings
+SMTP Server: smtp.gmail.com
+Username: The start of your Gmail address, before the @. For example if the email is someexamplename@gmail.com, then your username is someexamplename
+Password: Your GMAIL password.
+Port: 587
+Secure connection using: TLS</li>
+</ul>
+<p><img src="https://www.chris-shaw.com/asset/images/articles/gmail-custom-domain-fig4.png" alt="Figure 1" /></p>
+<h2>3. Verify</h2>
+<p>Upon completion, you will receive a verification email with a link, once you visit this link it will allow you to use the email address to send email.</p>
+<p>To confirm the email is working, try sending an email to another email address you own, or a temporary email service such as <a href="https://temp-mail.org/">https://temp-mail.org/</a> to confirm you can send.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

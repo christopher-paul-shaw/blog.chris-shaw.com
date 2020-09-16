@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title>Blog \ Using Wildcards In Virtual Hosts On Apache</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Using Wildcards In Virtual Hosts On Apache</h1>
+<p>Posted on <em>Tuesday 20th February 2018</em></p>
+<p>For the more advance user this article will not be of much use, but when I first attempted this I did not find much information. This is documenting how I overcame this issue to help anyone facing this in the future.</p>
+<h1>About Virtual Hosts</h1>
+<p>A virtual host refers to running more than one website from a single server, such as website1.server.com and website2.server.com. Virtual Hosts take the incoming address and map it to the location of the website on the server though.</p>
+<p>In apache, virtual hosts are config files usually residing in        <em>/etc/apache/sites-available/</em></p>
+<h1>What I wanted to do</h1>
+<p>I frequently have several projects going at a time, and where possible I tend to automate certain steps in the development cycle. As I currently have automated deployments to live, I wanted to replicate this for the branches into a test environment. </p>
+<p>A problem with this setup is that you need to create a virtual host for the website, and a permanent website such as <a href="https://www.chris-shaw.com">https://www.chris-shaw.com</a>, I don't have to worry about if the target domain exists when deploying, as I know it does.</p>
+<p>For automatically deploying branches, these virtualhosts don't exist. I could automate branch x of repo y to deploy automatically, but would need to then have to manually create the virtualhost for <a href="https://x.y.chris-shaw.com">https://x.y.chris-shaw.com</a> which defeats the point of automation.</p>
+<p>So, the problem I needed to fix was creating web addresses on the fly such as <a href="https://branch.project.testing.chris-shaw.com">https://branch.project.testing.chris-shaw.com</a> but there was not much out there to go on.</p>
+<h1>A Dynamic Virtualhost</h1>
+<p>Rather than creating and destroying virtual hosts, I opted to go the route of having one dynamic virtual host that would map to directories depending on parameters passed. Although I thought it would be the best solution, I could not find much information on this.</p>
+<p>I started off by using wildcards  * in the ServerName but to my frustration, I later found that wildcards could not be using in ServerName. But they could in ServerAlias </p>
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerAlias *.chris-shaw.com
+    VirtualDocumentRoot /var/www/%1/www/
+&lt;/VirtualHost&gt;</code></pre>
+<p>Now using the above, I could map to anything in the www directory, but that became a complete headache and caused some major clutter on the server, and it only allowed one level such as <a href="https://reponame.chris-shaw.com">https://reponame.chris-shaw.com</a></p>
+<p>I eventually decided to keep all the branches and repos in a directory called dev, this kept the server cleaner but I still needed to access the repos via the domain</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerAlias *.*.chris-shaw.com
+    VirtualDocumentRoot /var/www/%2/%1/www/
+&lt;/VirtualHost&gt;</code></pre>
+<p>Above now gives me the ability to have a two level subdomain, such as <a href="https://repo.dev.chris-shaw.com">https://repo.dev.chris-shaw.com</a> which worked well for showcasing projects and used this method for a while.</p>
+<p>After a few months I needed to start doing the same with branches, but wanted to keep the current functionality intact. To do so I added a second virtual host in the same file and prioritised branches over repo only.</p>
+<p>The following allows me to use both branch.<a href="https://repo.dev.chris-shaw.com">https://repo.dev.chris-shaw.com</a> and 
+<a href="https://branch.repo.dev.chris-shaw.com">https://branch.repo.dev.chris-shaw.com</a> </p>
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerAlias *.*.*.chris-shaw.com
+    VirtualDocumentRoot /var/www/%3/%2/%1/www/
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:80&gt;
+    ServerAlias *.*.chris-shaw.com
+    VirtualDocumentRoot /var/www/%2/%1/www/
+&lt;/VirtualHost&gt;</code></pre>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

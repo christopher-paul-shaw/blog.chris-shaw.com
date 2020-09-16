@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>Blog \ How To Get Postman On Screen</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>How To Get Postman On Screen</h1>
+<p>Posted on <em>Wednesday 3rd October 2018</em></p>
+<p><strong>This "guide" is not technical, and to some may be commonsense, but this article has been added to avoid googling the issue each time it catches me out.</strong></p>
+<h1>What is PostMan</h1>
+<p>Postman (<a href="https://www.getpostman.com/">https://www.getpostman.com/</a>) is a powerfull for communicating with and testing API's.</p>
+<h1>Problem</h1>
+<p>I use postman almost every day, and on a frequent basis when you launch the program, it does not appear on screen and has infact loaded itself off the current viewing area. Without getting it into the current viewable area, it is unusable.</p>
+<h1>Remedy</h1>
+<p>This is a work around untill a fix is implemented, but the following steps can help for other programs suffering the same issue.</p>
+<ol>
+<li>Hover the mouse over the PostMan Icon on the taskbar untill the preview window shows.</li>
+<li>Right Click the Preview Window and Choose the Maximise Option</li>
+</ol>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

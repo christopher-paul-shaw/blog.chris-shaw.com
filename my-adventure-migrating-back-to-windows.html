@@ -1,0 +1,134 @@
+<html>
+	<head>
+		<title>Blog \ My Adventure Migrating Back To Windows</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>My Adventure Migrating Back To Windows</h1>
+<p>Posted on <em>Monday 13th November 2017</em></p>
+<p><img src="https://winaero.com/blog/wp-content/uploads/2016/07/Ubutntu-on-Windows-10-logo-banner.jpg" alt="Ubuntu On Windows" />
+I have always been a fan of Linux, with my two favorite distributions being debian and ubuntu. Now as a server OS, linus is perfect and unquestionable, but there has always been problems of varing degree on the desktop.</p>
+<p>The most recent set of problems I had made me realise that I dont need to use linux as my desktop os to still be a fan so based on my experience fresh installing Ubutnu 17.10 I have decided to move back to windows.</p>
+<h2>What Caused Me to Switch Back?</h2>
+<p>The problem was, when 17.10 came out I did a fresh install like usual but faced some really strange an new issues.</p>
+<ul>
+<li>Dell D3100 Dock no longer worked (Including the Work Arounds)</li>
+<li>Ubuntu kept Freezing (Randomly)</li>
+<li>Double Clicking Icons on the desktop did nothing</li>
+<li>Using the HUD to search for programs such as "tweaks" would try installing MATE versions.</li>
+<li>The GUI felt worse than standard GNOME</li>
+</ul>
+<p>Now I did considor going back to using 16.04 or to another distro. But I feel Unity 7 was the most polished desktop environment, and the only other which is as polished and stable is windows 10.</p>
+<p>In  addition to the above, there were also the inherent set backs from using Linux over Windows. Such as;</p>
+<ul>
+<li>Most Propriatry Commerical Software is unavailable, E.G Maya, PhotoShop, Microsoft Office (In most cases the alternatives are not on par)</li>
+<li>Most Games are not ported to Linux, including games from major studios like EA, Rockstar Ect.</li>
+<li>Drivers for most hardware is a second thought for the manufacturers when it comes to linux.</li>
+</ul>
+<p>Before deciding upon windows I did look at other distributions and operatong systems.</p>
+<p>While doing so I looked more at the "Microsoft Loves Linux" compaign and came across WSL. 
+Their new developer focused angle was interesting to me, so I gave it a try.</p>
+<h2>What I am Looking For in Windows</h2>
+<p>I use computers mainly for programming, and I use virtual machines, git , ssh and rely heavily on bash for most of what I do. I also occasionally game, watch netflix and some light office work.</p>
+<p>In short I am looking to keep my current workflow in Ubuntu and transplant it onto Windows.
+I also want to take advantage of Windows strong points.</p>
+<ul>
+<li>All PC Games Written For Windows</li>
+<li>Native Support for Most Programs </li>
+<li>Microsoft Office</li>
+</ul>
+<p>Now there are caveats with using windows, but I intend to maintain it correctly so I am not worried about the usual windows nasties such as viruses and malware.</p>
+<h2>Windows Subsystem For Linux (Bash on Ubuntu on Windows)</h2>
+<p>Microsoft has worked closely with Canonical to bring Ubuntu to Windows. After quickly setting up and launching the program, you have a very familiar bash interface.</p>
+<p>Now I have been looking into the limitations of this, but the only real limitation I hit at the time of writing this article is that it is abstracted away from the hardware. For instance lsblk won't show what partitions you have, because Ubuntu is not being given that information.</p>
+<p>But besides accessing low level tools, I found the experience to be quite familiar and nice.</p>
+<p>I utilised this within my workflow for the following.</p>
+<ul>
+<li>Generating SSH Keypair</li>
+<li>Using Git with Github to manage my repositories</li>
+<li>SSH into several servers, including passwordless</li>
+<li>Running MySQL for Local Databases</li>
+<li>Monitoring System Resources</li>
+<li>Using VIM for Config Files</li>
+<li>Running Bash Scripts</li>
+<li>Running Local Web Server</li>
+<li>Running PHP, NodeJS</li>
+</ul>
+<p>It has proven so far to be quite the formidable tool, and besides being in the Window 10 UI, my workflow feels almost identical to when I was on Ubuntu itself.
+Although most of my workload can be handled in WSL, i still intend on having virtual machines on had for mote indepth work which may be beyond the scope of wsl.</p>
+<h2>No WINE for me</h2>
+<p>Another major upside I am experiencing is compatibility.Now I rarely used WINE to enable me to use windows software. But on occasion it was needed, and usually was not very good.</p>
+<h3>HeidiSQL</h3>
+<p>One of the first Programs I installed was HeidiSQL, one of my favourite DB Clients. It does work under wine, but it felt horrid so I ditched it for MySQL Workbench. Having it back in pride of place in windows is like having a trusty old friend back.</p>
+<h3>Gaming / Steam</h3>
+<p>What is a Windows PC without a little gaming. I installed steam from its website and was greated with all my linux catalogue, plus my windows catalogue which was 5 times bigger and including AAA titles like GTA V. 
+Something I could only dream about in  Ubuntu.</p>
+<p>Now I had so much hope for SteamOS and still do, but I don't think it will ever make a dent in the gaming market anywhere in the near future. So if you want to game on a pc, you really do need windows.</p>
+<p>Something else noted, the driver support was better for ny nvidia graphics card which made some linux native games like TF2 run slightly better.</p>
+<p><strong>Windows will always be superior in gaming, so this was not much of a surprise</strong></p>
+<h2>Running From a USB HDD and WHY</h2>
+<p>I run linux on my main sss drives, but have in the past run from usb keys and usb hard drives. I got used to this durability of linux which allowed me to try out multiple versiobs long term without loosing my main os.
+Now the last time i tried installing windows to a usb connected hdd it just did not work and was impossoble, so when I did a clone of my Windows HDD as a backup, I was surprised when I could boot from it over USB.</p>
+<p>This has become a handy option for me as I plan to migrate my work laptop back to windows, but did not want to be risky and just throw it on there.</p>
+<p>So for the past few days I have ran it from the USB, and apart from a few buggy messages, I have had no real downside from running it over USB.</p>
+<p>The notable issues doing this is:</p>
+<ul>
+<li>Slower Boot Speed</li>
+<li>Annoying Don't Unplug Your USB message</li>
+<li>Not been able to get it to Activate</li>
+</ul>
+<p><strong>I might do an article just on Windows on a USB Drive so we can go into more detail.</strong></p>
+<h2>So what is the verdict?</h2>
+<p>I have been using windows 10 for about two weeks now, and have not noticed any negative effect to my work flow. All the tools I need are on hand and the OS is generally behaving, although there have been some minor hiccups along the way.</p>
+<h1>Will I stay with windows</h1>
+<p>Although it's early days, I think I will be sticking with windows the the forseable future.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

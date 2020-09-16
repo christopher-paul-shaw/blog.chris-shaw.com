@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Blog \ Truncate Large Tables In Mysql</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Truncate Large Tables In Mysql</h1>
+<p>Posted on <em>Monday 6th July 2020</em></p>
+<p>When Truncating a table, this is a slow process as each record needs to be deleted, a quicker way to achieve the same result "an empty table", is to recreate the table from the exisrting one, without all the data.</p>
+<p>So we have a large table called example_table, we want to keep the table name, just get rid of the data, we can do this in the following simple steps</p>
+<ol>
+<li>
+<p>Rename the origional table</p>
+<pre><code>     RENAME TABLE example_table TO OLD_example_table;</code></pre>
+</li>
+<li>
+<p>Create the new Table</p>
+<pre><code>     CREATE TABLE example_table LIKE OLD_example_table;</code></pre>
+</li>
+<li>
+<p>Get Rid of the Old Table</p>
+<pre><code>     DROP TABLE OLD_example_table;</code></pre>
+</li>
+</ol>
+<p>Now you will have a new table of the same structure and name as the old one, just without all the rows.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<title>Blog \ Booting Raspberry Pi From Usb</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Booting Raspberry Pi From Usb</h1>
+<p>Posted on <em>Friday 16th March 2018</em></p>
+<p>This started to become a problem for me when was running a monitoring script which wrote to a file every 10 mins. After seeing SD Card failures I opted to move the OS to a USB and run off the usb just like you can on a full computer as detailed in <a href="https://www.chris-shaw.com/blog/install-ubuntu-16.04-persistently-on-a-usb-drive">https://www.chris-shaw.com/blog/install-ubuntu-16.04-persistently-on-a-usb-drive</a> </p>
+<p>The following instructions are written with the intent of being carried out on windows, but the instructions are similar for all platforms but you may need to use different tools, for instance if I was to do this on Ubuntu I would use the Disks application for the formatting of the drives and UNetBootin to write to the USB and SD card.</p>
+<h2>Downloads</h2>
+<ul>
+<li>Raspbian Img : <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a></li>
+<li>Rufus : <a href="https://rufus.akeo.ie/">https://rufus.akeo.ie/</a></li>
+</ul>
+<h3>1) Format the USB and SD Cards</h3>
+<p>Plug the USB drive into the PC and format to fat32. There are several ways to do this and you can find some of these in <a href="https://www.maketecheasier.com/format-usb-drives-windows-10/">https://www.maketecheasier.com/format-usb-drives-windows-10/</a> </p>
+<p>The option I went for was to Open up File Explorer, right click the USB drive an Choose the Format option.</p>
+<p>Repeat for the SD Card.</p>
+<h3>2) Install Raspbian onto the USB</h3>
+<p>Using Rufus pictured below, select the USB drive and load the img file for raspbian. When you click start it will begin writing the image to the usb. </p>
+<p><img src="https://www.chris-shaw.com/asset/images/articles/rufus-raspbian.png" alt="Rufus" /></p>
+<h3>3) Copy Files From USB to SD CARD</h3>
+<p>Using File Manager, drag the entire contents of the USB to the SD Card. </p>
+<h3>4) Change Root Source</h3>
+<p>The trick to this method is during the boot process we need to change where the files for the OS are located. On the SD card will be a file called cmdline.txt which tells the pi where the files are.
+In this file we need to change the following line</p>
+<pre><code>root=/dev/mmcblk0p2</code></pre>
+<p>to</p>
+<pre><code>root=/dev/sda2</code></pre>
+<p>At this point we need can insert the sd card and the usb drive into the raspberry pi and boot up.
+It works but the storage is limited and not using the full capacity of the USB drive.</p>
+<h2>Expand the File System</h2>
+<p>Following are the steps to expand the filesystem on the USB Drive</p>
+<h3>1) Login to the Rasberry Pi</h3>
+<pre><code>ssh pi@yourrasperrypi</code></pre>
+<h3>2) Start Fdisk on sda2</h3>
+<pre><code>sudo fdisk /dev/sda</code></pre>
+<h3>3) List out the partitions (will need this information later)</h3>
+<p>Press p to see the partitions, there should be two here.</p>
+<h3>4) Delete the Linux partition</h3>
+<p>Press d then the number of the partition, usually 2. </p>
+<h3>5) Create a New Partition</h3>
+<ul>
+<li>Press n for new partition</li>
+<li>Press p for primary</li>
+<li>Enter the partition number from above, in our case 2.</li>
+<li>Enter the Start size for the partition from step 3</li>
+<li>Enter the End size for the partition from step m3</li>
+<li>Reboot    <code>sudo reboot</code></li>
+</ul>
+<h3>6) Resize the FileSystem</h3>
+<pre><code>sudo resize2fs /dev/sda2</code></pre>
+<p>At this point the USB drive will have access to its full capacity.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>

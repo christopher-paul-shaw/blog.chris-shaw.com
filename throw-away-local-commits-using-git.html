@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>Blog \ Throw Away Local Commits Using Git</title>
+		<link rel="stylesheet" media="screen" href="https://toolkit.chris-shaw.com/css/toolkit.css" />
+		<link rel="stylesheet" media="screen" href="/assets/github.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open( "GET", "https://menu.chris-shaw.com/", true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var parser = new DOMParser();
+				var newDom = parser.parseFromString(xhr.responseText,"text/html");	   	
+				let nav = newDom.querySelector(".c-nav");
+				document.querySelector('body').prepend(nav);
+			}
+		}
+		xhr.send( null );
+		
+		
+	
+		</script>
+	
+		<style>
+			.hide {display: none;}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div class="o-container u-margin-top--small markdown">
+			<p><a href="/">&lt;&lt; Back</a></p>
+<h1>Throw Away Local Commits Using Git</h1>
+<p>Posted on <em>Saturday 24th March 2018</em></p>
+<p>There are many ways to do this task, this article like most of the git related ones on this blog are notes for reference. This was created when I got stuck with a commit which would not go away.</p>
+<h1>1) Git Reset</h1>
+<p>One way is to just reset the local repository to match the version in the remote repository. I tend to go for this one but occasonally forget the syntax.</p>
+<pre><code>git reset --hard origin/&lt;branch&gt;</code></pre>
+<p>example</p>
+<pre><code>git reset --hard origin/master</code></pre>
+<h1>2) Git Reset Commit</h1>
+<p>Similar to the above, we can set the commit we actually want to revert back to.</p>
+<pre><code>git reset --hard &lt;commit hash&gt;</code></pre>
+<h1>3) Delete Branch</h1>
+<p>One of the easiest though and often overlooked it so just delete the branch and checkout a fresh verson.</p>
+<pre><code>git branch -D mybranch
+git checkout -b origin/mybranch</code></pre>
+<p>Now there are other methods out there, the above are just my preferred.</p>
+		</div>
+	</body>
+	<script>
+		var searchBox =  document.getElementById('search');
+		if (searchBox) {
+			searchBox.addEventListener("keyup", function(){
+			let articles = document.querySelectorAll(".article");
+				for (var i = 0; i < articles.length; i++) {
+				    let current = articles[i]; 
+				    let title = current.querySelectorAll("a")[0].innerHTML;  
+				    let haystack = title.toLowerCase();
+				    let needle = this.value.toLowerCase();
+				    if(haystack.includes(needle)) {
+				      current.classList.remove('hide');
+				    }
+				    else {
+				      current.classList.add('hide');
+				    } 
+				}
+			});
+		}
+		</script>
+</html>
