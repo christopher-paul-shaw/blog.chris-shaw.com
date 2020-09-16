@@ -9,5 +9,4 @@ Instead you need to request a certificate and perform a manual dns challenge by 
 Using the following command you request the certificate and trigger the DNS TXT Challenge
 
 
-        certbot-auto certonly  --manual --preferred-challenges=dns 
-        --email youremail@example.co.uk--server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.example.co.uk
+        certbot-auto certonly  --manual --preferred-challenges=dns  --email youremail@example.co.uk--server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.example.co.uk
